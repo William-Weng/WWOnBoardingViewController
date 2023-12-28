@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vgA-uO-jnJ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="ThJ-sQ-xeY" kind="embed" id="deZ-Pc-vZS"/>
+                                </connections>
+                            </containerView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="coY-wy-5bT">
+                                <rect key="frame" x="0.0" y="363" width="414" height="170.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bj9-L3-p34">
+                                        <rect key="frame" x="0.0" y="0.0" width="32" height="170.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="32" id="GN4-Ps-yzw"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="previous"/>
+                                        <connections>
+                                            <action selector="previousPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vyz-nA-7OT"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oh4-g9-ccz">
+                                        <rect key="frame" x="32" y="0.0" width="350" height="170.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kRY-Jt-7Bx">
+                                        <rect key="frame" x="382" y="0.0" width="32" height="170.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="32" id="1nl-2s-YGe"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="next"/>
+                                        <connections>
+                                            <action selector="nextPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AhU-ie-s99"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wmh-Pe-Qgs">
+                                <rect key="frame" x="20" y="48" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wmh-Pe-Qgs" secondAttribute="height" id="5mv-hk-cZ6"/>
+                                    <constraint firstAttribute="width" constant="64" id="dg8-9O-HIu"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="arrow-to-first-track"/>
+                                <connections>
+                                    <action selector="rootPageAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Ot-Xm-bWZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vxg-CN-UcA">
+                                <rect key="frame" x="330" y="48" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="vxg-CN-UcA" secondAttribute="height" multiplier="1:1" id="uWv-O4-LyJ"/>
+                                    <constraint firstAttribute="width" constant="64" id="xoX-wu-u54"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="arrow-to-last-track"/>
+                                <connections>
+                                    <action selector="lastPageAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dZN-0o-2aX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                        <constraints>
+                            <constraint firstItem="vxg-CN-UcA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="0db-QS-cDU"/>
+                            <constraint firstItem="coY-wy-5bT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HeR-jf-gC7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vxg-CN-UcA" secondAttribute="trailing" constant="20" id="Kzv-Jx-KeX"/>
+                            <constraint firstItem="coY-wy-5bT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="LUW-VI-mrM"/>
+                            <constraint firstItem="wmh-Pe-Qgs" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="oP9-IR-Wzu"/>
+                            <constraint firstAttribute="trailing" secondItem="coY-wy-5bT" secondAttribute="trailing" id="qW7-aJ-d1q"/>
+                            <constraint firstItem="wmh-Pe-Qgs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="zIr-6h-7CA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="nvs-zi-2RQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1023.1884057971015" y="93.75"/>
+        </scene>
+        <!--On Boarding View Controller-->
+        <scene sceneID="Wtn-hD-HAU">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="ThJ-sQ-xeY" customClass="WWOnBoardingViewController" customModule="WWOnBoardingViewController" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I8y-x1-ky1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1864" y="93"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="j37-0f-fH5">
+            <objects>
+                <viewController storyboardIdentifier="Page1" id="nT2-Hy-xzn" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XQd-nc-dLJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="bPl-DT-mDM">
+                                <rect key="frame" x="16" y="80" width="382" height="736"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EgA-0v-3HX">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="64"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="Lys-NR-RPm"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Page-1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="61h-lx-WRC">
+                                        <rect key="frame" x="0.0" y="80" width="382" height="28"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pngtree-q-version-cute-cartoon-png-image_9137061" translatesAutoresizingMaskIntoConstraints="NO" id="xeT-hm-G7x">
+                                        <rect key="frame" x="0.0" y="124" width="382" height="400"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="400" id="XUN-vO-ao1"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The History of Christmas" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8C-bp-s7O">
+                                        <rect key="frame" x="0.0" y="540" width="382" height="28"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LkN-6U-dCb">
+                                        <rect key="frame" x="0.0" y="584" width="382" height="152"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <mutableString key="text">In the Western world, the birthday of Jesus Christ has been celebrated on December 25th since AD 354, replacing an earlier date of January 6th. The Christians had by then appropriated many pagan festivals and traditions of the season, that were practiced in many parts of the Middle East and Europe, as a means of stamping them out.
+
+There were mid-winter festivals in ancient Babylon and Egypt, and Germanic fertility festivals also took place at this time. The birth of the ancient sun-god Attis in Phrygia was celebrated on December 25th, as was the birth of the Persian sun-god, Mithras. The Romans celebrated Saturnalia, a festival dedicated to Saturn, the god of peace and plenty, that ran from the 17th to 24th of December. Public gathering places were decorated with flowers, gifts and candles were exchanged and the population, slaves and masters alike, celebrated the occasion with great enthusiasm.
+
+ In Scandinavia, a period of festivities known as Yule contributed another impetus to celebration, as opposed to spirituality. As Winter ended the growing season, the opportunity of enjoying the Summer's bounty encouraged much feasting and merriment.
+
+The Celtic culture of the British Isles revered all green plants, but particularly mistletoe and holly. These were important symbols of fertility and were used for decorating their homes and altars.
+
+ New Christmas customs appeared in the Middle Ages. The most prominent contribution was the carol, which by the 14th century had become associated with the religious observance of the birth of Christ.
+
+ In Italy, a tradition developed for re-enacting the birth of Christ and the construction of scenes of the nativity. This is said to have been introduced by Saint Francis as part of his efforts to bring spiritual knowledge to the laity.
+
+ Saints Days have also contributed to our Christmas celebrations. A prominent figure in today's Christmas is Saint Nicholas who for centuries has been honoured on December 6th. He was one of the forerunners of Santa Claus.
+
+ Another popular ritual was the burning of the Yule Log, which is strongly embedded in the pagan worship of vegetation and fire, as well as being associated with magical and spiritual powers.
+
+ Celebrating Christmas has been controversial since its inception. Since numerous festivities found their roots in pagan practices, they were greatly frowned upon by conservatives within the Church. The feasting, gift-giving and frequent excesses presented a drastic contrast with the simplicity of the Nativity, and many people throughout the centuries and into the present, condemn such practices as being contrary to the true spirit of Christmas.
+
+The earliest English reference to December 25th as Christmas Day did not come until 1043.</mutableString>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="era-jj-63n"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <constraints>
+                            <constraint firstItem="bPl-DT-mDM" firstAttribute="trailing" secondItem="era-jj-63n" secondAttribute="trailing" constant="-16" id="284-Ij-wZD"/>
+                            <constraint firstItem="bPl-DT-mDM" firstAttribute="top" secondItem="era-jj-63n" secondAttribute="top" constant="32" id="JJc-iV-MTP"/>
+                            <constraint firstItem="bPl-DT-mDM" firstAttribute="centerY" secondItem="XQd-nc-dLJ" secondAttribute="centerY" id="tiA-im-hAV"/>
+                            <constraint firstItem="bPl-DT-mDM" firstAttribute="centerX" secondItem="XQd-nc-dLJ" secondAttribute="centerX" id="wuL-Zs-KhZ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vX0-W1-b7M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2633" y="94"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Lh1-ou-S5c">
+            <objects>
+                <viewController storyboardIdentifier="Page2" id="uju-Fb-5JX" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="keX-5v-61X">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="XV9-XU-Bw1">
+                                <rect key="frame" x="16" y="80" width="382" height="736"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2SS-Zg-KGv">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="64"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="oWd-hr-VLs"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Page-2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CUl-ak-qc4">
+                                        <rect key="frame" x="0.0" y="80" width="382" height="28"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fc286dbf-5356-4a26-a2bc-b73caacb1883" translatesAutoresizingMaskIntoConstraints="NO" id="w1x-hq-zEe">
+                                        <rect key="frame" x="0.0" y="124" width="382" height="400"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="400" id="ruD-29-sC9"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="年獸傳說" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="skv-xe-DDa">
+                                        <rect key="frame" x="0.0" y="540" width="382" height="28"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="J4Z-w6-QFf">
+                                        <rect key="frame" x="0.0" y="584" width="382" height="152"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <mutableString key="text">相傳古代有種叫作「年」的怪獸，這種怪獸頭長犄角、眼如銅鈴，並且凶猛異常。每年，「年」都會下山來吃食牲畜、糟蹋莊稼，甚至還會吃人！因此每到「年」即將出現的時候，村民們便會躲到深山以躲避年獸。
+
+某一年除夕，村外來了個老乞丐。這老乞丐拄著拐杖，有著長長的白鬍，看似還有那麼些仙風道骨。他來到村子裡乞討，可是平時遇見乞丐，村民都不一定理會，這個時候大家忙著收拾，根本無人搭理。老乞丐沿路乞討，終於遇上了一位好心的老婆婆，老婆婆將乞丐請回家中，給予他一些食物，並且告訴他年獸就要來了，勸他跟著居民一起上山避難。誰知老乞丐聽了哈哈大笑，說只要讓他待在家中一夜，一定可趕走年獸。老婆婆苦勸不聽，只好答應他的請求，上山避難去了。
+
+當晚，年獸進村。放眼望去，只有老婆婆家燭火通明，仔細看門戶都貼滿了紅紙。年獸看見光明，認為家中有人，便向老婆婆家中跑去，忽然聽到霹哩啪啦的聲響，立刻嚇得停下腳步。這時家門大開，老人現身，手中拿著爆竹往年獸扔去。年獸大驚失色，落荒而逃。</mutableString>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fJw-gu-FQp"/>
+                        <color key="backgroundColor" systemColor="systemTealColor"/>
+                        <constraints>
+                            <constraint firstItem="XV9-XU-Bw1" firstAttribute="centerX" secondItem="keX-5v-61X" secondAttribute="centerX" id="1Sp-io-oSZ"/>
+                            <constraint firstItem="fJw-gu-FQp" firstAttribute="trailing" secondItem="XV9-XU-Bw1" secondAttribute="trailing" constant="16" id="6Gq-nW-vJQ"/>
+                            <constraint firstItem="XV9-XU-Bw1" firstAttribute="top" secondItem="fJw-gu-FQp" secondAttribute="top" constant="32" id="6l9-NA-E45"/>
+                            <constraint firstItem="XV9-XU-Bw1" firstAttribute="centerY" secondItem="keX-5v-61X" secondAttribute="centerY" id="rNd-am-Lg3"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xec-e0-Lv6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3370" y="94"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="vYF-57-3Ju">
+            <objects>
+                <viewController storyboardIdentifier="Page3" id="Epn-EL-Wed" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mpq-8v-5oY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="qCT-4T-ZtO">
+                                <rect key="frame" x="16" y="80" width="382" height="736"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rPE-ag-XUY">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="64"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="lib-hc-CVm"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Page-3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boI-xn-oYY">
+                                        <rect key="frame" x="0.0" y="80" width="382" height="28"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_processing20200511-13221-wf9odf" translatesAutoresizingMaskIntoConstraints="NO" id="ED2-pH-ZQu">
+                                        <rect key="frame" x="0.0" y="124" width="382" height="400"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="400" id="YcR-E0-lCi"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="雛ひな祭まつり" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zQA-R0-3Xa">
+                                        <rect key="frame" x="0.0" y="540" width="382" height="28"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7th-fd-NOh">
+                                        <rect key="frame" x="0.0" y="584" width="382" height="152"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <mutableString key="text">雛祭りは3月3日の節句（上巳の節句、桃の節句）に行われる年中行事である[2]。江戸時代までは和暦（太陰太陽暦）の3月3日（現在の4月頃）に行われていた。明治の改暦以後はグレゴリオ暦（新暦）の3月3日に行なうことが一般的になっている。ただし一部の地域では、引き続きに旧暦3月3日に祝うか、新暦4月3日に祝う（東北・北陸など積雪・寒冷地に多い）。
+
+「桃の節句」は旧暦の3月3日が桃の花が咲く時期であったことによる。
+
+現代では新暦3月3日に室内で行うことが一般的であるが、かつて農村部などでは暖かく春らしくなった旧暦3月3日に、子供が野遊びに出掛けて「草花びな」を作ったり、弁当や野外料理を食べたりする風習が一部にあり、現代でも伝承している地域がある[3]。
+
+また、江戸時代には、9月9日の重陽の節句に雛人形をもう一度飾る「後（のち）の節供」という飾る習慣があった。 この雛を｢百歳雛｣と言う。
+
+香川県三豊市仁尾町の一部では、雛祭りは行わず、八朔に雛人形を飾る。これは、戦国時代に仁尾城が落城したのが旧暦3月3日であったためとされる。
+
+兵庫県たつの市御津町室津地区では、ひな祭りを旧暦8月1日に行っていた。『室津追考記』によると、戦国時代の永禄9年1月11日（1566年2月1日）、室山城主・浦上政宗の次男・清宗と小寺職隆の娘との間で挙げた祝言（結婚式）の夜に、かねてより対立関係にあった龍野城主・赤松政秀の急襲を受けて政宗は清宗もろとも戦死し、花嫁も亡くなり、室山城は落城した。室津の人々はこの出来事を悼み、非業の死を遂げた花嫁の鎮魂のために、3月3日ではなく、半年遅れの八朔に雛祭りを延期したとされる。戦後、この風習は長く途絶えていたが、近年、町おこしの一環の「八朔のひな祭り」として復活した。
+歴史
+起源
+
+雛祭りは人形（ひとがた）の風習、「天児（あまがつ）、這子（ほうこ）」などによる祓いの信仰、「ひいな遊び」などの行事が融合したものと考えられている[2]。
+
+古代中国には上巳の日（3月最初の巳の日）に川で身を清める風習があり、これが日本に伝わって草や藁など作った人形（ひとがた）に穢れや災いを移して川や海に流す風習と融合したとされる[2]。また、貴族の間では幼児を災いから守る「天児と這子」が作られ、後の「立雛」の起源になった[2]。一方で上流階級の子女の間には「ひいな遊び」という遊びがあった[2]。
+
+京都では平安貴族の子女の雅びな「遊びごと」として行われ、その当時においても、やはり小さな御所風の御殿「屋形」をしつらえ飾ったものと考えられている。初めは儀式ではなく遊びであり、雛祭りが「ひなあそび」とも呼ばれるのはそのためである。一方、平安時代には川へ紙で作った人形を流す「流し雛」があり、「上巳の節句（穢れ払い）」として雛人形は「災厄よけ」の「守り雛」として祀られる様になった。当時の乳幼児死亡率は現代とは比較にならないほど高く、赤ん坊のうちに亡くなることは珍しくはなかった。親としては必死の思いでこの成長を見守り、枕元には形代を置き、厄除けとした。そして、1年の災いを、春のひな流しで祓う。これが、ひな祭りの起源である[4]。
+近世
+
+年中行事としての雛祭りは江戸時代までには定着したとされる[2]。この頃には製作技術の発展によってさまざまな人形が作られるようになり、雛人形の鑑賞を楽しむスタイルに変化した。
+
+一方で、「ひな人形はひな祭りが終わったらすぐに片付けないとならない」とされ、片付けないと娘の婚期が遅れるなどの不幸に見舞われるとされた。これは、穢れ払いの儀式の名残であり、娘の災厄を受け止めた雛人形がいつまでも家の中にいることを忌避していると考えられる[4]。このようなしきたりは、現代にも残っている。
+
+慶長8年（1603年）、征夷大将軍に任命されるために上洛中であった徳川家康が公卿達から上巳の祝いを受けて以来、諸大名に対しても上巳の日に将軍への祝賀を求めるようになった。しかし、当時の公家社会の状況を見ると、寛永年間に作成された『後水尾院当時年中行事』（国立公文書館所蔵）には、3月3日に闘鶏と桃花酒による祝盃が行われているものの、上巳の儀式は実際の巳の日に陰陽道の土御門家から進上された撫で物の人形に衣を着せて天皇の枕元に一晩置いて翌日に祓いを行ったとあり、更に別の記録では後水尾天皇と徳川和子の娘である興子内親王（後の明正天皇）の誕生後に後宮内で内々に雛の祝いが行われていたとあり（『御湯殿上の日記』寛永2年3月4日条）、表と奥で全く異なる儀式が行われていた。ところが、内親王の母方の実家である徳川将軍家から雛の祝いの金品や玩具が届けられるようになると、朝廷においても3月3日に内親王に祝意を述べる儀式が行われるようになった。江戸城内においても、徳川家光の養女となった大姫に対する雛の祝いが行われるようになり、寛永年間に公武において前後して雛祭りが公式行事に組み入れられていったとみられている[5]。
+
+江戸時代初期には形代の名残を残す立った形の「立雛」や、座った形の「坐り雛」（寛永雛）が作られていたが、これらは男女一対の内裏雛を飾るだけの物であった。しかし、飾り物としての古の形式と、一生の災厄をこの人形に身代りさせるという祭礼的意味合いが強くなり、武家子女など身分の高い女性の嫁入り道具の家財の一つに数えられるようにもなった。そのため、自然と華美で贅沢なものになっていった。時代が下ると人形は精巧さを増し、十二単の装束を着せた「元禄雛」、大型の「享保雛」などが作られたが、これらは金箔張りの屏風の前に内裏の人形を並べた立派なものだった。享保年間からは、江戸幕府が倹約政策のとり、大型の雛人形が一時禁止された。『御触書宝暦集成』十五では、「雛は八寸以下、雛諸道具は蒔絵は不可」という制限が見られる[6]。しかし、この規制を逆手に取り「芥子雛」と呼ばれる精巧を極めた小さな雛人形（わずか数センチの大きさ）が流行した。
+
+    東園佐和子の御雛人形（明治神宮神楽殿にて 2009年3月2日撮影）
+    東園佐和子の御雛人形（明治神宮神楽殿にて 2009年3月2日撮影）
+    雛人形、女雛は天冠、男雛は立纓冠を着用（江戸時代、遠山記念館所蔵）
+    雛人形、女雛は天冠、男雛は立纓冠を着用（江戸時代、遠山記念館所蔵）
+    2段目に囃子人形を配した3段飾り。女雛は天冠、男雛は立纓冠（鳥居清長「子宝五節遊 - 雛遊」 18世紀）
+    2段目に囃子人形を配した3段飾り。女雛は天冠、男雛は立纓冠（鳥居清長「子宝五節遊 - 雛遊」 18世紀）
+    ひな遊 文久頃婦人（三十六佳撰）
+    ひな遊 文久頃婦人（三十六佳撰）
+
+江戸時代後期には京で「有職雛」とよばれる宮中の雅びな平安装束を正確に再現したものが現れた。さらに江戸では新たに独自の内裏雛として今日の雛人形につながる「古今雛」が現れ、京に伝えられた。江戸で製作された古今雛には、原舟月などの作家ものがあり、ガラス製の玉眼も比較的早く用いられた。幕末には江戸の名職人であった渡辺玉翁が京で修行し玉眼を伝えた。
+
+江戸時代には三人官女や五人囃子なども加わって、雛壇は三段から五段と増え、幕末には七段の雛飾りがみられるようになった[2][注 1]。さらに大道具や小道具も増え、京では京都御所の紫宸殿を模した雛御殿や台所用具[注 2]が作られて御殿飾りとして発展した。いっぽう江戸では御殿飾りは広まらず[注 3]、代わりに雛壇と嫁入り道具を用いた大規模な段飾りが発展した。
+現代
+
+現代では住宅事情や収納などを考えて三段飾りが主流になっている[2]。
+
+戦後、西日本の御殿飾りは大きさと複雑さにより組立と収納が大変であったことにくわえ、百貨店等の流通業者により取扱商品の全国的統一化が進んだことなどにより昭和30年代に急速に廃れ、壇飾りに押されて姿を消した。
+
+2021年に経済産業省が発表した「2020年工業統計調査」によれば、2019年度において国内全体の「節句人形、ひな人形」は83か所の事業所で製造されており、全体の出荷額は約88億9400万円である[7]。このうち、出荷額が公表されている府県は埼玉県、静岡県、愛知県、京都府であり、このうち最も出荷額が多い府県は埼玉県で、約43億8900万円である[7]。これは、2番目に出荷額の多い愛知県の出荷額（約5億9500万円）の約7.4倍にあたる[7]。埼玉県内の主な産地は、さいたま市岩槻区と鴻巣市である[8][9]。
+雛人形
+3段飾りの雛人形
+木目込みの雛人形
+御殿飾りひな人形
+天神さま飾り
+
+ひな人形は、形代（かたしろ）と呼ばれる人形の一種で、神や霊が降臨するものとされている。娘の身代わりとして、娘に襲い掛かろうとする病などの災厄、穢れを、ひな人形にうつして避けるという行事がひな祭りの始まりである。紙や土などで作られた原始的で簡単な人形で、1年の災いを受け止めた後に川や海に流された。これを「ひな流し」という[4]。
+
+「雛人形」は、宮中の殿上人の装束を模している。立纓冠は江戸時代以降に始まったため、伝統的には男雛の冠には垂纓冠、女雛の冠には天冠が適切である。髪型は主に「大垂髪（おすべらかし）」と「古典下げ髪（こてんさげがみ）」がある。「大垂髪」は、平安時代からの垂れ髪形式が鎌倉・室町を経て、江戸時代後期に完成された比較的新しい髪型で、ビン（前髪部分）を大きく張った髪型である。「古典下げ髪」は、割り毛とも呼ばれ、平安時代では長く黒い髪が美人の条件とされていたため、髪を全て後ろへ流し、わずかに垂らした両頬の毛を切りそろえた髪型で、顔を髪の毛で三方から包むことで面長に見せ、肌色の白さを強調し、より美しく見せるためとされる。「古典下げ髪」は、「大垂髪」よりも結髪の技法が難しく、結髪師の技量が問われるため現在は希少となっている。
+
+多くは藁で作られた土台に衣装を着せ付け、別に作られた頭部を合体して作られているものが多い。また木目込みの技法で比較的小さなサイズで作られているものも人気がある。その他、土製のものや陶器・木製などのさまざまな種類がある。段飾りのように主に内裏雛が座っている形のものが多いが、立雛のものもある。
+
+古くから嫁入り道具の一つとされたため雛人形は、母方の実家から贈ることが一般的とされたが[10]、現在では家庭により異なる[11]。このため代々伝わっているものや遠方から嫁いできた時に持ち込まれたものもあるため、地域差は一概には言えないが、関東地方と関西地方と二分され、飾り方や各人形の形・持ち物が異なっている。
+
+関東地方では主に武家の持ち物・暮らしを表したものが多く、関西地方では御所・宮中の暮らしを模したものが多い。（乗り物で関東は「駕籠」、関西は「牛車」の違いなど）
+種類
+内裏雛（だいりびな）
+
+男雛（おびな）と女雛（めびな）が一対である。天皇（てんのう）と皇后（こうごう）を模したものとされる[12]。
+
+皇族用の繧繝縁（うんげんべり）の厚畳の親王台が敷かれる。男雛は束帯（縫腋袍）に冠、飾り太刀をつけ、手には笏を持つ。女雛は五衣唐衣裳装束（十二単）に頭には平額（ひらびたい）に 釵子（さいし）櫛をつけ手に檜扇を持つ。メーカーや好みによって男雛はおおむね同じ型のものが多いが、女雛の装束は一番上の唐衣の形が違うなどバリエーションがある。この他、江戸時代の古い雛人形は、天冠を被り、豪華にしている事があったが、昭和になっては、(80年代後半)雛人形メーカーの｢人形の秀月｣が｢雛人形を買いに来たお客様に750人に御自宅の家紋入り天冠プレゼント!｣と言うキャンペーンを行ったことがある。内裏雛に、御殿がついたものもあったが、段飾りに押されて消えてしまった。また、階に階段が付く物がある。
+
+昨今では従来の座ったもののほか、立ち姿の立ち雛の形のものや皇室の婚礼にあやかった装束を模した内裏雛を作るメーカーもある。
+
+「内裏雛」とは男雛と女雛の2人で一対を指す[13][14][注 4]、江戸前期からあった表現で[14]、内裏とは天皇の宮殿（御所）を意味する[16][17]。また「お雛様」は雛壇の人形全てを指す[14][16]。本来、男雛のみを「お内裏様」、女雛のみを「お雛様」と呼ぶのは誤りであるが[13][14][16]、現代では誤用ながらも広く用いられている[13][14][17]。この誤用はサトウハチローが作詞した童謡「うれしいひなまつり」の歌詞から広まったといわれる[13][14][16]。サトウハチロー自身はこの誤りを恥じ、後々まで気にしていたという[13][16]。
+
+宮中のしきたりにより、内裏雛に近侍する居稚児（2人が多い）が飾られることもある。段飾りの場合は男雛と女雛のそれぞれ外側に、御殿飾りの場合は親王台の前に配置する。
+官女（かんじょ）
+
+宮中に仕える女官をあらわし、2段目に配置する。現在では通常3人1組であるため「三人官女」（さんにんかんじょ）と呼ばれることが多いが、戦前の豪華なものなどでは「五人官女」や「七人官女」のこともある。
+
+3人の場合手に持つ道具は、中央が主に関東においては三方・関西においては島台（松竹梅）、向かって右に長柄（ながえ。長柄銚子）、左には提子（ひさげ）、高坏がある例では各女官の間に飾る[18]。
+
+中央の官女が座って両側が立っているものが多いが、逆に中央の官女が立ち両側が座っているもの、(大正時代まで)さらに全員が立っているものなど、(江戸時代まで)時期や製作者により形態はさまざまである。
+
+また、中央の官女はリーダー格とされ、眉を剃り（引眉）、鉄漿をつけた既婚者の姿で表される。この他桂(うちき)打ち掛け 姿のものもある。
+五人囃子（ごにんばやし）
+
+能のお囃子を奏でる5人の楽人をあらわし、三段目に配置する。向かって右から、謡（うたい・扇を持っている）、笛（ふえ）、小鼓（こつづみ）、大鼓（おおつづみ）、そして太鼓（たいこ）の順であり、右から楽器が小さい順番に並んでいる。また、音が大きい楽器から並べるそうだ。衣装は大体のところ、金蘭を用いたきらびやかな物だが、裃揃いもある。髪はすべて元服前のおかっぱだが、昔は(昭和30年代まで)は、不揃いに作ることがありおかっぱで無く、坊主のような髪に帽子が無いのが主流だったが、最近は統一されてきている。また、小刀を脇に刺している。能囃子の代わりに雅楽の楽人の場合もあり、5人もしくは7人であることが主である。「五楽人」の場合は向かって右から、羯鼓（かっこ・楽太鼓）、笙（しょう）、火焔太鼓（かえんだいこ）、篳篥（ひちりき・縦笛）、横笛（竜笛）の順に、「七楽人」の場合は絃楽器の2人が加わり、向かって右から、羯鼓、琵琶、笙、火焔太鼓、篳篥、横笛、和琴または箏の順に並べる[注 5][19]。
+随身（ずいじん、ずいしん）
+
+四段目に配置する。通称：右大臣と左大臣。向かって右が左大臣で年配者、向かって左が右大臣で若者である。いずれも武官の姿であり、正しくは近衛中将または少将である。随身・矢大臣も参照。また、例外の事だが、二段目、三段目、五段目に飾られていることがあるが、それは、その家の飾りかた次第である。靴を履いていることがあるが、これは室外にいることを表している。
+仕丁（しちょう）
+
+従者と護衛（あるいは衛士）や雑役をあらわし、通常3人1組の人形を五段目に配置する。怒り、泣き、笑いの表情から、三人上戸（じょうご）の別称もある。月代を剃っていることが多い。
+主に関東においてはそれぞれ、日傘をかざしてお供する係、殿の履物をお預かりする係、雨をよける丸い笠（かさ）を竿（さお）の先にのせてお供する係を分担している。向かって右から立傘（たてがさ・雨傘）、沓台（くつだい）、台笠（だいがさ・日傘）の順に飾る。
+また主に関西では、箒、塵取、熊手を手にすることもあり、宮中の清掃の役目をする。この時は向かって右から竹箒、塵取、熊手の順に飾る[20]。なお御殿飾りの場合などでは清掃役の代わりに炊事役として火にかけた鍋を囲んでいるものもあるほか、護衛として大紋付の2人1組の侍が追加されていることもある[注 6]など、従者と護衛と雑役をそれぞれ別に設けた大所帯となっていることもある。また、例外だが、宴会道具などが付いたものがある。(鯛、寿司 銚子、盃、鍋)なお、鍋は実際に金属製でちゃんと焚き火の模型がリアリティーに作られている。
+メーカーによる追加
+
+    三歌人（柿本人麻呂、小野小町、菅原道真）・久月の八段飾り雛
+    能の鶴亀
+    三賢女（紫式部、清少納言、小野小町）
+
+配置
+七段の雛人形の例
+
+三人官女以下の随臣、従者人形を「供揃い」という。現代日本では男雛を右（向かって左）に配置する家庭が多く[注 7][注 8]、結婚式の新郎新婦もそれに倣っているが、人形の配置の仕方は下記のとおり近代前後で変化があり、それが現在も地域差として残っている。
+
+壇上の内裏雛は内裏の宮中の並び方を模している。かつての日本では「左」が上の位であった[注 9]。人形では左大臣（雛では髭のある年配の方）が一番の上位で、男雛から見ての左側（我々見る側からの向かって右）にいる。ちなみに飾り物の「左近の桜、右近の橘」での桜は天皇の左側になり、これは宮中の紫宸殿の敷地に実際に植えてある樹木の並びでもある。明治天皇の時代までは左が高位という伝統があったため天皇は左に立った[注 4]。西日本の一部ではこの配置を続けている家庭もある[注 10]。
+
+しかし明治の文明開化によって日本も西洋化し、大正天皇の即位式では、西洋に倣って右に立った。それが皇室の伝統となり、昭和天皇は常に右に立ち香淳皇后が左に並んだ。それにならい、男雛を右（向かって左）に配置することが一般的となった。
+飾り方
+菱餅
+雛あられ
+
+飾り方にも全国各地で色々あるが、多くはこの3種の飾り方である。
+
+    御殿を模しての全部の飾り方（段飾りなどを含む）
+    御殿の内の一室を拝しての飾り方
+    屏風を用いて御座所の有り様を拝しての飾り方
+
+元々、雛人形は室内の一室に平面に各人形や道具類・調度類を並べて飾り楽しむ飾り方をされてきた。そのため、この平面で飾っていたものが、今で言うドールハウスのように、人形専用の御殿を作り、それを中心とした飾り方に変化していく。九州地方や古い雛人形では「雛御殿」という建物を使った「御殿飾り雛」という飾り方をしているものも多い。これは江戸末期から昭和の初めまで飾られていた。
+
+また、段飾りは一説によると箪笥の引き出しを階段状に整えて、そこに緋毛氈を敷き飾ったとも言われている。江戸時代頃から行われるようになり、現在でもその形が引き継がれている。
+
+さらにはお囃子に使う楽器や、雪洞（ぼんぼり）、牛車などの家財道具を一緒に飾ることもある。昭和時代を中心に上段の写真にあるような五段、七段が多い。七段飾りは高度経済成長期以降に主流になった。昭和後期には八段の檀飾りも登場し、従来より増えた段に菅原道真・小野小町・柿本人麻呂の三歌人や、紫式部などが乗せられた。昭和の後期から平成にかけては集合住宅などでは和室がなく七段飾りを飾るスペースがないなどの理由から、本来の内裏雛のみ、または内裏雛と三人官女のみの簡素化されたセットが作られるようになった。令和現在では、こういった段数を減らしたものが主流となっている。この際、収納に便利なように、人形がしまわれている箱がそのまま飾り台として利用できる、などの工夫がされている。
+
+戦前までの上方・京都や関西の一部では天皇の御所を模した御殿式の屋形の中に男雛・女雛を飾り、その前の階段や庭に三人官女や五人囃子らを並べ、横に鏡台や茶道具、重箱などの精巧なミニチュアなどを飾っていた。
+
+節句が終わった後も雛人形を片付けずにいると結婚が遅れるという話は昭和初期に作られた俗説ともされる。旧暦の場合、梅雨が間近であるため、早く片付けないと人形や絹製の細工物に虫喰いやカビが生えるから、というのが理由だとされる。また、地域によっては「おひな様は春の飾りもの。季節の節できちんと片付ける」など躾の意味からもいわれている。
+雛料理
+
+この行事に食べられる食品は菱餅、雛あられ、白酒が必須の定番で、他に鯛や蛤の料理（吸い物等）、ちらし寿司が加わることもある。地方によってはサザエや生菓子の引千切もある。こういった料理は「雛料理」と言われ、デパートや料理店でも季節の料理としても提供される。
+雛人形の生産地・販売地
+
+関東地方に集中しており、生産地としては埼玉県さいたま市岩槻区の岩槻人形や埼玉県鴻巣市の伝統工芸品である鴻巣雛が有名。また栃木県佐野市も小規模ながら生産店が存在する。
+
+販売に関しては全国の商業施設で販売されているが、集中して軒を連ねるのは、人形の問屋街である東京都台東区の浅草橋駅周辺（浅草橋・柳橋など）が有名で、「人形の久月」「秀月」「吉徳大光（「顔が命の〜」のCMキャッチコピー）」といった専門店がある。これらの店舗は毎年正月から2月ぐらいにかけテレビCMを流す。ちなみに雛人形と共に手掛ける五月人形も3月3日以降にCMが流れる。
+雛祭りが祝日でない理由
+
+江戸時代、雛祭りは「五節句」のひとつとして「祝日として存在した」とされる。しかし、1873年の新暦採用が「五節句（=雛祭り等を含む）」の祝日廃止となって、さらに「国民の祝日」より「皇室の祝日」色が濃くなった。このため、戦後になって新たに祝日を作ろうとする動きが見られるようになる。祝日制定にあたり3月3日の案や、新年度の4月1日の案も出ていたが、最終的には5月5日の端午の節句を祝日（こどもの日）とする案が採用された。北海道・東北をはじめ寒冷で気候の悪い地域の多い時期を避け、全国的に温暖な時期の5月にしたというのが大きな理由の一つとされる。
+特色ある雛祭り
+
+各地で、大量に雛人形飾りを公開したり、特色ある飾りを飾ったり、少年少女、又は成人の男女が雛人形に扮したりする祭り等が、この期間中に開催される。
+
+    ひな飾りと桃の花まつり - 2月から4月。雛壇の上に数多くのに吊るし雛を飾る。山梨県甲州市|甘草屋敷
+    鴻巣びっくりひな祭り - 3月上旬。伝統工芸品である鴻巣雛を巨大な「ピラミッドひな壇」に飾る。埼玉県鴻巣市
+    百段階段でひなまつり - 3月3日、又はその直前の土日に年1日限り開催。茨城県久慈郡大子町の十二所神社参道「百段階段」に多くの雛人形を飾る。
+
+    甘草屋敷の「ひな飾りと桃の花まつり」
+    甘草屋敷の「ひな飾りと桃の花まつり」
+    鴻巣びっくりひな祭り
+    鴻巣びっくりひな祭り
+    茨城県大子町の「百段階段でひなまつり」
+    茨城県大子町の「百段階段でひなまつり」
+    静岡県袋井市の「可睡斎ひなまつり」[22]
+    静岡県袋井市の「可睡斎ひなまつり」[22]
+
+雛祭りを歌った楽曲
+
+    うれしいひなまつり（童謡、作詞：山野三郎（サトウハチロー）、作曲：河村直則（河村光陽）、1936年、ポリドール）
+    ひなまつり（童謡、作詞：海野厚、作曲：三宅延齢／中山晋平。同じ詞に2つの曲がつけられた。中山晋平版は1929年に平井英子が歌いビクターからレコード発売した。
+    おひなまつり（童謡、作詞：斎藤信夫、作曲：海沼実）
+    ひなまつり（童謡、作詞：斉木秀男、作曲：三宅延齢）
+    ひなまつりの歌（童謡、作詞：与田準一、作曲：河村光陽）
+    おひなさま（絵本唱歌、作者不明）
+    たのしいひなまつり（童謡、作詞：吉岡治、作曲：越部信義）
+    血塗られたひな祭り（ロック、作詞・作曲：鈴木研一、歌：人間椅子）
+    ミニモニ。ひなまつり!（J-POP、作詞・作曲：つんく♂、歌：ミニモニ。）
+    雛祭（文部省唱歌、作者不明）
+    ひなまつり（文部省唱歌、作詞：林柳波、作曲：平井康三郎）
+    雛祭り（童謡、作詞：林柳波、作曲：本居長世）
+    ひなまつり（童謡、作詞：水谷まさる、作曲：小松清）
+    雛祭の宵（ひなのよい、童謡、作詞者不詳、作曲：長谷川良夫）
+    雛の宵（長唄、作詞：松正子（松本白鸚夫人）、作曲：今藤政太郎）
+    雛の宵（清元）
+    雛奉（己龍）
+
+脚注
+[脚注の使い方]
+注釈
+
+    ^ 五人囃は能楽の楽団であり、武家に用いられたものである。
+    ^ 関西ではひな祭りに台所の使い方を女の子に教える風習があり、ミニチュアとして実際に使われた。
+    ^ 初代原舟月が雛御殿と左近の桜・右近の橘を作ったところ、奉行所に不敬として捕らえられ、江戸より出身の大坂へ追放された。
+    ^ a b 明治33年・冨山房発行の『国語読本（尋常小学校用）』巻四・第二十四課に「ひな祭」についての話があり、「上の段にならびたる、男女の人形をだいりびなと云ふ。」と言い切っている他、明治時代の並べ方として挿絵では向かって左に女雛・右に男雛が描かれている[15]。
+    ^ 八楽人のこともあり、その場合は和琴と箏をともに加える。
+    ^ 雛御殿に脇御殿があり階段が2箇所以上ある場合など
+    ^ 2008-02-20 - 2008-03-18 ほべりぐアンケートでお内裏様はむかって左側に飾るが70%。
+    ^ e-まちタウン。63%は、お内裏様が左・お雛様が右、逆は18%と回答。
+    ^ 南を向いて座った際に、日の上る側が上座であるとされたため。よって後述の桜や橘に関しても、桜は咲いている（もっと言えば雛壇の外側が咲いており内側はまだつぼみであるのが正しい）のに対して橘は咲いていない（そもそも橘の季節は5月であるが）。
+    ^ 男雛を向かって左に置くのを「現代式」、右に置くのを「古式」としている文献も存在する[21]。
+
+出典
+
+    ^ 『可睡斎32段ひな人形』2018年11月29日。
+    ^ a b c d e f g h “博物館だより 第12号”. 国立国会図書館. 埼玉県立歴史と民俗の博物館. 2022年2月25日閲覧。
+    ^ 尾崎織女 (2018年3月3日). “草花びな　野で春を祝う　古の風習”. 日本経済新聞 2021年9月10日閲覧。
+    ^ a b c 火田, 博文 ([2019]). 本当は怖い日本のしきたり オーディオブック. Pan roringu (Hatsubai). ISBN 978-4-7759-8631-8. OCLC 1108314699
+    ^ 間瀬久美子「意識のなかの身分制」（初出:朝尾直弘 編『日本の近世 七 身分と格式』中央公論新社、1992年/所収:間瀬『近世朝廷の権威と寺社・民衆』吉川弘文館、2022年）2022年、P367-379.
+    ^ 江後迪子 (1999年). 隠居大名の江戸暮らし. 吉川弘文館. p. 52ページ. ISBN 4-642-05474-X
+    ^ a b c “2020年確報　品目別統計表「1．製造品に関する統計表」（3）品目別、都道府県別の出荷及び産出事業所数（従業者4人以上の事業所）”. 工業統計調査. 経済産業省 (2021年8月25日). 2021年9月10日閲覧。
+    ^ 「岩槻の人形」（PDF）『楽楽楽さいたま』第10号、2016年3月、18-19頁。
+    ^ “鴻巣雛（こうのすびな）”. 鴻巣市 (2016年3月1日). 2021年9月10日閲覧。
+    ^ 社団法人日本人形協会
+    ^ 全日本人形専門店チェーン Archived 2016年3月7日, at the Wayback Machine.
+    ^ "内裏雛". 日本大百科全書、精選版 日本国語大辞典、デジタル大辞泉. コトバンクより2021年9月10日閲覧。
+    ^ a b c d e “うたの旅人 捨てたいのに広まった 「うれしいひなまつり」”. be (朝日新聞社). (2012年3月3日). オリジナルの2012年3月2日時点におけるアーカイブ。 2013年1月19日閲覧。
+    ^ a b c d e f 大城夏希; 是沢博昭 (2019年2月9日). “時代で変わるひな人形 素材にスワロフスキーも”. NIKKEIプラス1. 日本経済新聞社. 2019年2月26日閲覧。
+    ^ 坪内雄藏 著『國語讀本尋常小学校用』(株)冨山房インターナショナル、2012年復刻版、ISBN 978-4-905194-23-1、p.256-257
+    ^ a b c d e “春秋”. 西日本新聞 (西日本新聞社). (2019年2月10日) 2019年2月26日閲覧。
+    ^ a b みずめ (2020年3月3日). “童謡「お内裏様〜とお雛様～♪」実はお内裏様と呼ぶのは間違い？ お雛様の”雛”って何？”. Japaaan: p. 1 2021年9月10日閲覧。
+    ^ 雛壇ストーリー 二段目 三人官女ひな祭り 文化普及協會 公式ホームページ
+    ^ 五楽人・七楽人の並べ方と持ち物真多呂人形博物館
+    ^ 雛壇ストーリー 五段目 仕丁ひな祭り 文化普及協會 公式ホームページ
+    ^ 『人形手帳』（日本人形協会） P.65
+    ^ 『可睡齋ひなまつり』2017年4月1日。
+
+関連項目
+ウィキメディア・コモンズには、雛祭りに関連するメディアおよびカテゴリがあります。
+
+    日本人形
+    吊るし飾り／さるぼぼ
+    流し雛（この流し雛という風習の始まりは古代の祓い神事の人形であったといわれる）
+    福よせ雛
+    雛壇芸人
+    白酒 (日本酒)
+    寿司
+    雛あられ
+    菱餅
+    ビッグひな祭り
+    天児
+    青い目の人形 - 日米友好を目的に1927年の雛祭りにアメリカから贈られた
+
+外部リンク
+
+    雛飾り - 文化遺産オンライン（文化庁）
+    ひなまつり 日本人のこころ - (1986年 カラー 25分)、科学映像館
+    ヒナマツリ 雛祭 - 大百科事典(平凡社, 1939)
+    節句 - 神社本庁
+    雛祭り(紙びなの作り方) - お宮キッズ（全国神社総代会）
+    武田京子「家庭教育からみた雛祭り」『岩手大学教育学部研究年報』第54巻第2号、岩手大学教育学部、1994年、79-87頁、doi:10.15113/00011583、ISSN 03677370、NAID 110000109149。
+
+雛人形に関するカテゴリ:
+
+    日本の伝統人形 
+
+カテゴリ:
+
+    3月の画像提供依頼節句雛祭り日本の年中行事3月女性の文化春の季語
+
+    最終更新 2023年12月14日 (木) 10:00 （日時は個人設定で未設定ならばUTC）。</mutableString>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bs4-OC-vcp"/>
+                        <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="qCT-4T-ZtO" firstAttribute="centerY" secondItem="mpq-8v-5oY" secondAttribute="centerY" id="0KE-pi-4PC"/>
+                            <constraint firstItem="qCT-4T-ZtO" firstAttribute="centerX" secondItem="mpq-8v-5oY" secondAttribute="centerX" id="2rZ-gr-k3l"/>
+                            <constraint firstItem="qCT-4T-ZtO" firstAttribute="top" secondItem="bs4-OC-vcp" secondAttribute="top" constant="32" id="b6H-F9-B4t"/>
+                            <constraint firstItem="bs4-OC-vcp" firstAttribute="trailing" secondItem="qCT-4T-ZtO" secondAttribute="trailing" constant="16" id="fVy-jo-Pyg"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0u2-ia-RnR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4078" y="94"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arrow-to-first-track" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="arrow-to-last-track" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="fc286dbf-5356-4a26-a2bc-b73caacb1883" width="160" height="160"/>
+        <image name="image_processing20200511-13221-wf9odf" width="266.66665649414062" height="266.66665649414062"/>
+        <image name="next" width="42.666667938232422" height="42.666667938232422"/>
+        <image name="pngtree-q-version-cute-cartoon-png-image_9137061" width="400" height="400"/>
+        <image name="previous" width="42.666667938232422" height="42.666667938232422"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
