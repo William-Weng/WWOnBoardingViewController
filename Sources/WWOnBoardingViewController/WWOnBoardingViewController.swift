@@ -78,18 +78,19 @@ extension WWOnBoardingViewController: UIPageViewControllerDelegate {
 // MARK: - 公開功能
 public extension WWOnBoardingViewController {
     
-    /// 相關設定
+    /// [相關設定](https://www.cnblogs.com/XYQ-208910/p/4850281.html)
     /// - Parameters:
     ///   - onBoardingDelegate: WWOnBoardingViewControllerDelegate?
     ///   - isInfinityLoop: 是否無限迴轉
     ///   - currentIndex: 開始頁面
     func setting(onBoardingDelegate: WWOnBoardingViewControllerDelegate? = nil, isInfinityLoop: Bool = false, currentIndex: Int = 0) {
+        
         self.onBoardingDelegate = onBoardingDelegate
         self.isInfinityLoop = isInfinityLoop
         self.currentIndex = currentIndex
     }
     
-    /// [手動移到下一頁 ==> 超過就回到第一頁](https://medium.com/彼得潘的-swift-ios-app-開發問題解答集/scroll-view-決定捲動範圍的-content-layout-guide-6f606740918a)
+    /// [手動移到下一頁 => 超過就回到第一頁](https://medium.com/彼得潘的-swift-ios-app-開發問題解答集/scroll-view-決定捲動範圍的-content-layout-guide-6f606740918a)
     /// - Parameters:
     ///   - animated: [Bool](https://medium.com/彼得潘的-swift-ios-app-開發問題解答集/在-storyboard-設定-content-size-實現水平捲動的-scroll-view-2710fa247293)
     ///   - completion: ((Int) -> Void)?
@@ -108,11 +109,15 @@ public extension WWOnBoardingViewController {
         }
         
         moveNextPage(to: nextIndex, for: .forward, animated: animated) { isFinished in
-            if (isFinished) { completion?(nextIndex) }
+            
+            if (isFinished) {
+                self.onBoardingDelegate?.changeViewController(self, didFinishAnimating: false, currentIndex: self.currentIndex, nextIndex: nextIndex, error: nil)
+                completion?(nextIndex)
+            }
         }
     }
     
-    /// [手動移到上一頁 ==> 不足就回到最後一頁](https://medium.com/@sharma17krups/onboarding-view-with-swiftui-b26096049be3)
+    /// [手動移到上一頁 => 不足就回到最後一頁](https://medium.com/@sharma17krups/onboarding-view-with-swiftui-b26096049be3)
     /// - Parameters:
     ///   - animated: [Bool](https://dev.to/domanovdev/swiftui-onboarding-view-1165)
     ///   - completion: ((Int) -> Void)?
@@ -131,7 +136,11 @@ public extension WWOnBoardingViewController {
         }
 
         moveNextPage(to: previousIndex, for: .reverse, animated: animated) { isFinished in
-            if (isFinished) { completion?(previousIndex) }
+            
+            if (isFinished) {
+                self.onBoardingDelegate?.changeViewController(self, didFinishAnimating: false, currentIndex: previousIndex, nextIndex: self.nextIndex, error: nil)
+                completion?(previousIndex)
+            }
         }
     }
     
@@ -142,18 +151,22 @@ public extension WWOnBoardingViewController {
     func rootPage(animated: Bool = true, completion: ((Int) -> Void)?) {
         
         let rootIndex = 0
-        
+
         if (pageViewControllerArray.isEmpty) {
             onBoardingDelegate?.changeViewController(self, didFinishAnimating: false, currentIndex: currentIndex, nextIndex: nextIndex, error: .arrayEmpty)
             completion?(currentIndex); return
         }
         
         moveNextPage(to: rootIndex, for: .reverse, animated: animated) { isFinished in
-            if (isFinished) { completion?(rootIndex) }
+            
+            if (isFinished) {
+                self.onBoardingDelegate?.changeViewController(self, didFinishAnimating: false, currentIndex: rootIndex, nextIndex: self.nextIndex, error: nil)
+                completion?(rootIndex)
+            }
         }
     }
     
-    /// 手動移到最後一頁
+    /// [手動移到最後一頁](https://medium.com/彼得潘的-swift-ios-app-開發教室/作業-2-4-uipagecontrol-b66998bd0327)
     /// - Parameters:
     ///   - animated: Bool
     ///   - completion: ((Int) -> Void)?
@@ -167,11 +180,14 @@ public extension WWOnBoardingViewController {
         }
         
         moveNextPage(to: lastIndex, for: .forward, animated: animated) { isFinished in
-            if (isFinished) { completion?(lastIndex) }
+            if (isFinished) {
+                self.onBoardingDelegate?.changeViewController(self, didFinishAnimating: false, currentIndex: lastIndex, nextIndex: self.nextIndex, error: nil)
+                completion?(lastIndex)
+            }
         }
     }
     
-    /// 移動到該頁面 => 有動畫按太快會當掉
+    /// [移動到該頁面 => 有動畫按太快會當掉](https://medium.com/彼得潘的-swift-ios-app-開發問題解答集/ios-14-進化的-page-control-f097af2801a6)
     /// - Parameters:
     ///   - pageIndex: Int
     ///   - direction: UIPageViewController.NavigationDirection
