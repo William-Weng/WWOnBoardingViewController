@@ -35,7 +35,7 @@ final class ViewController: UIViewController {
     @IBAction func previousPage(_ sender: UIButton) { onBoardingViewController?.previousPage(completion: nil) }
     @IBAction func nextPage(_ sender: UIButton) { onBoardingViewController?.nextPage(completion: nil) }
     @IBAction func rootPage(_ sender: UIButton) { onBoardingViewController?.rootPage(completion: nil) }
-    @IBAction func lastPage(_ sender: UIButton) { onBoardingViewController?.lostPage(completion: nil) }
+    @IBAction func lastPage(_ sender: UIButton) { onBoardingViewController?.lastPage(completion: nil) }
     
     @objc func changeCurrentPage(_ sender: UIPageControl) {
         onBoardingViewController?.moveNextPage(to: sender.currentPage, for: .forward, animated: true, completion: nil)

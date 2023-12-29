@@ -56,6 +56,7 @@ final class ViewController: UIViewController {
         ]
     }()
     
+    private let currentPage = 0
     private var onBoardingViewController: WWOnBoardingViewController?
 
     override func viewDidLoad() {
@@ -68,7 +69,7 @@ final class ViewController: UIViewController {
     @IBAction func previousPage(_ sender: UIButton) { onBoardingViewController?.previousPage(completion: nil) }
     @IBAction func nextPage(_ sender: UIButton) { onBoardingViewController?.nextPage(completion: nil) }
     @IBAction func rootPage(_ sender: UIButton) { onBoardingViewController?.rootPage(completion: nil) }
-    @IBAction func lastPage(_ sender: UIButton) { onBoardingViewController?.lostPage(completion: nil) }
+    @IBAction func lastPage(_ sender: UIButton) { onBoardingViewController?.lastPage(completion: nil) }
     
     @objc func changeCurrentPage(_ sender: UIPageControl) {
         onBoardingViewController?.moveNextPage(to: sender.currentPage, for: .forward, animated: true, completion: nil)
@@ -77,7 +78,7 @@ final class ViewController: UIViewController {
 
 // MARK: - WWOnBoardingViewControllerDelegate
 extension ViewController: WWOnBoardingViewControllerDelegate {
-   
+    
     func viewControllers(onBoardingViewController: WWOnBoardingViewController) -> [UIViewController] {
         return pageViewControllerArray
     }
@@ -95,8 +96,9 @@ private extension ViewController {
     ///   - segue: UIStoryboardSegue
     ///   - sender: Any?
     func initSetting(for segue: UIStoryboardSegue, sender: Any?) {
+        
         onBoardingViewController = segue.destination as? WWOnBoardingViewController
-        onBoardingViewController?.setting(onBoardingDelegate: self, isInfinityLoop: true, currentIndex: 1)
+        onBoardingViewController?.setting(onBoardingDelegate: self, isInfinityLoop: true, currentIndex: currentPage)
     }
     
     /// 尋找Storyboard上的ViewController for StoryboardId
@@ -109,11 +111,13 @@ private extension ViewController {
     /// [PageControl設定](https://medium.com/彼得潘的-swift-ios-app-開發問題解答集/ios-14-進化的-page-control-f097af2801a6)
     func pageContolSetting() {
 
+        pageControl.allowsContinuousInteraction = true
         pageControl.numberOfPages = pageViewControllerArray.count
+        pageControl.currentPage = currentPage
         pageControl.backgroundStyle = .prominent
+        
         // pageControl.preferredIndicatorImage = UIImage(systemName: "sun.max.fill")
         (0..<pageControl.numberOfPages).forEach { pageControl.setIndicatorImage(UIImage(systemName: "\($0).circle"), forPage: $0) }
-        
         pageControl.addTarget(self, action: #selector(changeCurrentPage(_:)), for: .valueChanged)
     }
 }
