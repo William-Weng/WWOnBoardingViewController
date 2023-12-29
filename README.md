@@ -31,11 +31,11 @@ Set UIPageViewController to WWOnBoardingViewController.
 
 |函式|功能|
 |-|-|
-|previousPage(animated:,completion:)|回上一頁|
-|nextPage(animated:,completion:)|到下一頁|
-|rootPage(animated:,completion:)|回到首頁|
-|lostPage(animated:,completion:)|到最後一頁|
-|moveNextPage(to:,for:,animated:,completion:)|到某一頁|
+|previousPage(animated:completion:)|回上一頁|
+|nextPage(animated:completion:)|到下一頁|
+|rootPage(animated:completion:)|回到首頁|
+|lastPage(animated:completion:)|到最後一頁|
+|moveNextPage(to:for:animated:completion:)|到某一頁|
 
 ## Example - 程式範例
 ```swift

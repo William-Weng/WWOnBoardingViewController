@@ -170,7 +170,7 @@ public extension WWOnBoardingViewController {
     /// - Parameters:
     ///   - animated: Bool
     ///   - completion: ((Int) -> Void)?
-    func lostPage(animated: Bool = true, completion: ((Int) -> Void)?) {
+    func lastPage(animated: Bool = true, completion: ((Int) -> Void)?) {
         
         let lastIndex = pageViewControllerArray.count - 1
         

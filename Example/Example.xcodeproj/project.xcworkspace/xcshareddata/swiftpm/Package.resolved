@@ -1,15 +1,6 @@
 {
   "pins" : [
     {
-      "identity" : "wwonboardingviewcontroller",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/William-Weng/WWOnBoardingViewController",
-      "state" : {
-        "revision" : "9acd90c7a6433906110fbb980400c96850c930a9",
-        "version" : "1.1.1"
-      }
-    },
-    {
       "identity" : "wwprint",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/William-Weng/WWPrint",

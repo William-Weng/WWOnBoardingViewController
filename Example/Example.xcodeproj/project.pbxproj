@@ -16,7 +16,6 @@
 		8130039027D5D18100436128 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8130038F27D5D18100436128 /* Constant.swift */; };
 		8130039227D5D19000436128 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8130039127D5D19000436128 /* Extension.swift */; };
 		8154F50B2B3E67B70003EEA7 /* WWOnBoardingViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 8154F50A2B3E67B70003EEA7 /* WWOnBoardingViewController */; };
-		8154F5112B3E785D0003EEA7 /* WWOnBoardingViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 8154F5102B3E785D0003EEA7 /* WWOnBoardingViewController */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +28,7 @@
 		3DBCD88126F198F300522E3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8130038F27D5D18100436128 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		8130039127D5D19000436128 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		8154F5132B3E7ED10003EEA7 /* WWOnBoardingViewController */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = WWOnBoardingViewController; path = ..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,7 +38,6 @@
 			files = (
 				8154F50B2B3E67B70003EEA7 /* WWOnBoardingViewController in Frameworks */,
 				3DAC9C1927016E78006663C2 /* WWPrint in Frameworks */,
-				8154F5112B3E785D0003EEA7 /* WWOnBoardingViewController in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +47,7 @@
 		3DBCD86726F198EF00522E3B = {
 			isa = PBXGroup;
 			children = (
+				8154F5122B3E7ED10003EEA7 /* Packages */,
 				3DBCD87226F198EF00522E3B /* Example */,
 				3DBCD87126F198EF00522E3B /* Products */,
 				81AC148C2B3D2CDD00973CA6 /* Frameworks */,
@@ -117,6 +117,14 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		8154F5122B3E7ED10003EEA7 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				8154F5132B3E7ED10003EEA7 /* WWOnBoardingViewController */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 		81AC148C2B3D2CDD00973CA6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,7 +151,6 @@
 			packageProductDependencies = (
 				3DAC9C1827016E78006663C2 /* WWPrint */,
 				8154F50A2B3E67B70003EEA7 /* WWOnBoardingViewController */,
-				8154F5102B3E785D0003EEA7 /* WWOnBoardingViewController */,
 			);
 			productName = Example;
 			productReference = 3DBCD87026F198EF00522E3B /* Example.app */;
@@ -175,7 +182,6 @@
 			mainGroup = 3DBCD86726F198EF00522E3B;
 			packageReferences = (
 				3DAC9C1727016E78006663C2 /* XCRemoteSwiftPackageReference "WWPrint" */,
-				8154F50F2B3E785D0003EEA7 /* XCRemoteSwiftPackageReference "WWOnBoardingViewController" */,
 			);
 			productRefGroup = 3DBCD87126F198EF00522E3B /* Products */;
 			projectDirPath = "";
@@ -427,14 +433,6 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		8154F50F2B3E785D0003EEA7 /* XCRemoteSwiftPackageReference "WWOnBoardingViewController" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/William-Weng/WWOnBoardingViewController";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.1.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -445,11 +443,6 @@
 		};
 		8154F50A2B3E67B70003EEA7 /* WWOnBoardingViewController */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = WWOnBoardingViewController;
-		};
-		8154F5102B3E785D0003EEA7 /* WWOnBoardingViewController */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8154F50F2B3E785D0003EEA7 /* XCRemoteSwiftPackageReference "WWOnBoardingViewController" */;
 			productName = WWOnBoardingViewController;
 		};
 /* End XCSwiftPackageProductDependency section */
