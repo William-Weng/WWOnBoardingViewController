@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/William-Weng/WWOnBoardingViewController",
       "state" : {
-        "branch" : "main",
-        "revision" : "e6d9b938ded7f87866bcff8ee6113f3d2707a01c"
+        "revision" : "e834cd3f322633b4b48cdf21a126e2d7e28be84e",
+        "version" : "1.0.1"
       }
     },
     {

@@ -170,6 +170,25 @@ public extension WWOnBoardingViewController {
             if (isFinished) { completion?(lastIndex) }
         }
     }
+    
+    /// 移動到該頁面 => 有動畫按太快會當掉
+    /// - Parameters:
+    ///   - pageIndex: Int
+    ///   - direction: UIPageViewController.NavigationDirection
+    ///   - animated: 動畫
+    ///   - completion: ((Bool) -> Void)?
+    func moveNextPage(to pageIndex: Int, for direction: UIPageViewController.NavigationDirection, animated: Bool, completion: ((Bool) -> Void)?) {
+        
+        guard let nextPage = pageViewControllerArray[safe: pageIndex] else {
+            onBoardingDelegate?.changeViewController(self, didFinishAnimating: false, currentIndex: currentIndex, nextIndex: nextIndex, error: .pageIndex)
+            return
+        }
+        
+        setViewControllers([nextPage], direction: direction, animated: animated, completion: { [weak self] isFinished in
+            if (isFinished) { self?.currentIndex = pageIndex }
+            completion?(isFinished)
+        })
+    }
 }
 
 // MARK: - 小工具
@@ -270,24 +289,5 @@ private extension WWOnBoardingViewController {
         }
         
         return pageViewControllerArray[previousIndex]
-    }
-    
-    /// 移動到該頁面 ==> 有動畫按太快會當掉
-    /// - Parameters:
-    ///   - pageIndex: Int
-    ///   - direction: UIPageViewController.NavigationDirection
-    ///   - animated: 動畫
-    ///   - completion: ((Bool) -> Void)?
-    func moveNextPage(to pageIndex: Int, for direction: UIPageViewController.NavigationDirection, animated: Bool, completion: ((Bool) -> Void)?) {
-        
-        guard let nextPage = pageViewControllerArray[safe: pageIndex] else {
-            onBoardingDelegate?.changeViewController(self, didFinishAnimating: false, currentIndex: currentIndex, nextIndex: nextIndex, error: .pageIndex)
-            return
-        }
-        
-        setViewControllers([nextPage], direction: direction, animated: animated, completion: { [weak self] isFinished in
-            if (isFinished) { self?.currentIndex = pageIndex }
-            completion?(isFinished)
-        })
     }
 }

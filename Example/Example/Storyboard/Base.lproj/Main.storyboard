@@ -25,7 +25,7 @@
                                 </connections>
                             </containerView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="coY-wy-5bT">
-                                <rect key="frame" x="0.0" y="363" width="414" height="170.5"/>
+                                <rect key="frame" x="16" y="363" width="382" height="170.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bj9-L3-p34">
                                         <rect key="frame" x="0.0" y="0.0" width="32" height="170.5"/>
@@ -39,11 +39,11 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oh4-g9-ccz">
-                                        <rect key="frame" x="32" y="0.0" width="350" height="170.5"/>
+                                        <rect key="frame" x="32" y="0.0" width="318" height="170.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kRY-Jt-7Bx">
-                                        <rect key="frame" x="382" y="0.0" width="32" height="170.5"/>
+                                        <rect key="frame" x="350" y="0.0" width="32" height="170.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="32" id="1nl-2s-YGe"/>
                                         </constraints>
@@ -64,7 +64,7 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="arrow-to-first-track"/>
                                 <connections>
-                                    <action selector="rootPageAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Ot-Xm-bWZ"/>
+                                    <action selector="rootPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Ot-Xm-bWZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vxg-CN-UcA">
@@ -76,9 +76,12 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="arrow-to-last-track"/>
                                 <connections>
-                                    <action selector="lastPageAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dZN-0o-2aX"/>
+                                    <action selector="lastPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dZN-0o-2aX"/>
                                 </connections>
                             </button>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="D5P-Fa-rxh">
+                                <rect key="frame" x="149" y="832" width="116.5" height="26"/>
+                            </pageControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemYellowColor"/>
@@ -88,11 +91,16 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vxg-CN-UcA" secondAttribute="trailing" constant="20" id="Kzv-Jx-KeX"/>
                             <constraint firstItem="coY-wy-5bT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="LUW-VI-mrM"/>
                             <constraint firstItem="wmh-Pe-Qgs" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="oP9-IR-Wzu"/>
-                            <constraint firstAttribute="trailing" secondItem="coY-wy-5bT" secondAttribute="trailing" id="qW7-aJ-d1q"/>
+                            <constraint firstAttribute="trailing" secondItem="coY-wy-5bT" secondAttribute="trailing" constant="16" id="qW7-aJ-d1q"/>
+                            <constraint firstItem="D5P-Fa-rxh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tAY-pi-2tw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="D5P-Fa-rxh" secondAttribute="bottom" constant="4" id="z8m-bl-Bbk"/>
                             <constraint firstItem="wmh-Pe-Qgs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="zIr-6h-7CA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nvs-zi-2RQ"/>
+                    <connections>
+                        <outlet property="pageControl" destination="D5P-Fa-rxh" id="K81-nK-Iz0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -145,7 +153,7 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LkN-6U-dCb">
                                         <rect key="frame" x="0.0" y="584" width="382" height="152"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <mutableString key="text">In the Western world, the birthday of Jesus Christ has been celebrated on December 25th since AD 354, replacing an earlier date of January 6th. The Christians had by then appropriated many pagan festivals and traditions of the season, that were practiced in many parts of the Middle East and Europe, as a means of stamping them out.
+                                        <string key="text">In the Western world, the birthday of Jesus Christ has been celebrated on December 25th since AD 354, replacing an earlier date of January 6th. The Christians had by then appropriated many pagan festivals and traditions of the season, that were practiced in many parts of the Middle East and Europe, as a means of stamping them out.
 
 There were mid-winter festivals in ancient Babylon and Egypt, and Germanic fertility festivals also took place at this time. The birth of the ancient sun-god Attis in Phrygia was celebrated on December 25th, as was the birth of the Persian sun-god, Mithras. The Romans celebrated Saturnalia, a festival dedicated to Saturn, the god of peace and plenty, that ran from the 17th to 24th of December. Public gathering places were decorated with flowers, gifts and candles were exchanged and the population, slaves and masters alike, celebrated the occasion with great enthusiasm.
 
@@ -163,7 +171,7 @@ The Celtic culture of the British Isles revered all green plants, but particular
 
  Celebrating Christmas has been controversial since its inception. Since numerous festivities found their roots in pagan practices, they were greatly frowned upon by conservatives within the Church. The feasting, gift-giving and frequent excesses presented a drastic contrast with the simplicity of the Nativity, and many people throughout the centuries and into the present, condemn such practices as being contrary to the true spirit of Christmas.
 
-The earliest English reference to December 25th as Christmas Day did not come until 1043.</mutableString>
+The earliest English reference to December 25th as Christmas Day did not come until 1043.</string>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -225,11 +233,11 @@ The earliest English reference to December 25th as Christmas Day did not come un
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="J4Z-w6-QFf">
                                         <rect key="frame" x="0.0" y="584" width="382" height="152"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <mutableString key="text">相傳古代有種叫作「年」的怪獸，這種怪獸頭長犄角、眼如銅鈴，並且凶猛異常。每年，「年」都會下山來吃食牲畜、糟蹋莊稼，甚至還會吃人！因此每到「年」即將出現的時候，村民們便會躲到深山以躲避年獸。
+                                        <string key="text">相傳古代有種叫作「年」的怪獸，這種怪獸頭長犄角、眼如銅鈴，並且凶猛異常。每年，「年」都會下山來吃食牲畜、糟蹋莊稼，甚至還會吃人！因此每到「年」即將出現的時候，村民們便會躲到深山以躲避年獸。
 
 某一年除夕，村外來了個老乞丐。這老乞丐拄著拐杖，有著長長的白鬍，看似還有那麼些仙風道骨。他來到村子裡乞討，可是平時遇見乞丐，村民都不一定理會，這個時候大家忙著收拾，根本無人搭理。老乞丐沿路乞討，終於遇上了一位好心的老婆婆，老婆婆將乞丐請回家中，給予他一些食物，並且告訴他年獸就要來了，勸他跟著居民一起上山避難。誰知老乞丐聽了哈哈大笑，說只要讓他待在家中一夜，一定可趕走年獸。老婆婆苦勸不聽，只好答應他的請求，上山避難去了。
 
-當晚，年獸進村。放眼望去，只有老婆婆家燭火通明，仔細看門戶都貼滿了紅紙。年獸看見光明，認為家中有人，便向老婆婆家中跑去，忽然聽到霹哩啪啦的聲響，立刻嚇得停下腳步。這時家門大開，老人現身，手中拿著爆竹往年獸扔去。年獸大驚失色，落荒而逃。</mutableString>
+當晚，年獸進村。放眼望去，只有老婆婆家燭火通明，仔細看門戶都貼滿了紅紙。年獸看見光明，認為家中有人，便向老婆婆家中跑去，忽然聽到霹哩啪啦的聲響，立刻嚇得停下腳步。這時家門大開，老人現身，手中拿著爆竹往年獸扔去。年獸大驚失色，落荒而逃。</string>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -291,7 +299,7 @@ The earliest English reference to December 25th as Christmas Day did not come un
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7th-fd-NOh">
                                         <rect key="frame" x="0.0" y="584" width="382" height="152"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <mutableString key="text">雛祭りは3月3日の節句（上巳の節句、桃の節句）に行われる年中行事である[2]。江戸時代までは和暦（太陰太陽暦）の3月3日（現在の4月頃）に行われていた。明治の改暦以後はグレゴリオ暦（新暦）の3月3日に行なうことが一般的になっている。ただし一部の地域では、引き続きに旧暦3月3日に祝うか、新暦4月3日に祝う（東北・北陸など積雪・寒冷地に多い）。
+                                        <string key="text">雛祭りは3月3日の節句（上巳の節句、桃の節句）に行われる年中行事である[2]。江戸時代までは和暦（太陰太陽暦）の3月3日（現在の4月頃）に行われていた。明治の改暦以後はグレゴリオ暦（新暦）の3月3日に行なうことが一般的になっている。ただし一部の地域では、引き続きに旧暦3月3日に祝うか、新暦4月3日に祝う（東北・北陸など積雪・寒冷地に多い）。
 
 「桃の節句」は旧暦の3月3日が桃の花が咲く時期であったことによる。
 
@@ -540,7 +548,7 @@ The earliest English reference to December 25th as Christmas Day did not come un
 
     3月の画像提供依頼節句雛祭り日本の年中行事3月女性の文化春の季語
 
-    最終更新 2023年12月14日 (木) 10:00 （日時は個人設定で未設定ならばUTC）。</mutableString>
+    最終更新 2023年12月14日 (木) 10:00 （日時は個人設定で未設定ならばUTC）。</string>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
