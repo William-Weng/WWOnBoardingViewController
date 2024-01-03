@@ -42,8 +42,8 @@ Set UIPageViewController to WWOnBoardingViewController.
 |函式|功能|
 |-|-|
 |viewControllers(onBoardingViewController:) -> [UIViewController]|換頁的UIViewControllers|
-|willChangeViewController(_:currentIndex:nextIndex:error: WWOnBoardingViewController.OnBoardingError?)|將要換頁功能|
-|didChangeViewController(_:finishAnimating:transitionCompleted:currentIndex:nextIndex:error: WWOnBoardingViewController.OnBoardingError?)|換頁完成功能|
+|willChangeViewController(_:currentIndex:nextIndex:pageRotateDirection:error:)|將要換頁功能|
+|didChangeViewController(_:finishAnimating:transitionCompleted:currentIndex:nextIndex:pageRotateDirection:error:)|換頁完成功能|
 
 ## Example - 程式範例
 ```swift
@@ -65,6 +65,7 @@ final class ViewController: UIViewController {
     }()
     
     private let currentPage = 0
+    private let isInfinityLoop = true
     private var onBoardingViewController: WWOnBoardingViewController?
 
     override func viewDidLoad() {
@@ -91,16 +92,16 @@ extension ViewController: WWOnBoardingViewControllerDelegate {
         return pageViewControllerArray
     }
     
-    func willChangeViewController(_ onBoardingViewController: WWOnBoardingViewController, currentIndex: Int, nextIndex: Int, error: WWOnBoardingViewController.OnBoardingError?) {
+    func willChangeViewController(_ onBoardingViewController: WWOnBoardingViewController, currentIndex: Int, nextIndex: Int, pageRotateDirection: WWOnBoardingViewController.PageRotateDirection, error: WWOnBoardingViewController.OnBoardingError?) {
         
-        if let error = error { wwPrint("willChangeError => \(error)"); return }
-        wwPrint("willChange => \(nextIndex)")
+        if let error = error { wwPrint("willChangeError [\(pageRotateDirection)]: \(currentIndex) => \(nextIndex) / \(error)"); return }
+        wwPrint("willChange [\(pageRotateDirection)]: \(currentIndex) => \(nextIndex)")
     }
     
-    func didChangeViewController(_ onBoardingViewController: WWOnBoardingViewController, finishAnimating finished: Bool, transitionCompleted: Bool, currentIndex: Int, nextIndex: Int, error: WWOnBoardingViewController.OnBoardingError?) {
+    func didChangeViewController(_ onBoardingViewController: WWOnBoardingViewController, finishAnimating finished: Bool, transitionCompleted: Bool, currentIndex: Int, nextIndex: Int, pageRotateDirection: WWOnBoardingViewController.PageRotateDirection, error: WWOnBoardingViewController.OnBoardingError?) {
         
-        if let error = error { wwPrint("didChangeError => \(error)"); return }
-        wwPrint("didChange => \(currentIndex)")
+        if let error = error { wwPrint("didChangeError [\(pageRotateDirection)]: \(currentIndex) => \(nextIndex) / \(error)"); return }
+        wwPrint("didChange [\(pageRotateDirection)]: \(currentIndex) => \(nextIndex)")
         pageControl.currentPage = currentIndex
     }
 }
@@ -115,7 +116,7 @@ private extension ViewController {
     func initSetting(for segue: UIStoryboardSegue, sender: Any?) {
         
         onBoardingViewController = segue.destination as? WWOnBoardingViewController
-        onBoardingViewController?.setting(onBoardingDelegate: self, isInfinityLoop: true, currentIndex: currentPage)
+        onBoardingViewController?.setting(onBoardingDelegate: self, isInfinityLoop: isInfinityLoop, currentIndex: currentPage)
     }
     
     /// 尋找Storyboard上的ViewController for StoryboardId

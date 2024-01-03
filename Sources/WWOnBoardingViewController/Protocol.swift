@@ -20,8 +20,9 @@ public protocol WWOnBoardingViewControllerDelegate: AnyObject {
     ///   - onBoardingViewController: WWOnBoardingViewController
     ///   - currentIndex: 當前頁面
     ///   - nextIndex: 將要換的下一頁
+    ///   - pageRotateDirection: 換頁的方向
     ///   - error: WWOnBoardingViewController.OnBoardingError?
-    func willChangeViewController(_ onBoardingViewController: WWOnBoardingViewController, currentIndex: Int, nextIndex: Int, error: WWOnBoardingViewController.OnBoardingError?)
+    func willChangeViewController(_ onBoardingViewController: WWOnBoardingViewController, currentIndex: Int, nextIndex: Int, pageRotateDirection: WWOnBoardingViewController.PageRotateDirection, error: WWOnBoardingViewController.OnBoardingError?)
     
     /// [換頁完成功能](https://disp.cc/b/KnucklesNote/9XZn)
     /// - Parameters:
@@ -30,6 +31,7 @@ public protocol WWOnBoardingViewControllerDelegate: AnyObject {
     ///   - completed: 有沒有換頁成功？ (同一頁)
     ///   - currentIndex: 目前頁的Index
     ///   - nextIndex: 下一頁的Index
+    ///   - pageRotateDirection: 換頁的方向
     ///   - error: WWOnBoardingViewController.OnBoardingError?
-    func didChangeViewController(_ onBoardingViewController: WWOnBoardingViewController, finishAnimating finished: Bool, transitionCompleted completed: Bool, currentIndex: Int, nextIndex: Int, error: WWOnBoardingViewController.OnBoardingError?)
+    func didChangeViewController(_ onBoardingViewController: WWOnBoardingViewController, finishAnimating finished: Bool, transitionCompleted completed: Bool, currentIndex: Int, nextIndex: Int, pageRotateDirection: WWOnBoardingViewController.PageRotateDirection, error: WWOnBoardingViewController.OnBoardingError?)
 }

@@ -50,16 +50,16 @@ extension ViewController: WWOnBoardingViewControllerDelegate {
         return pageViewControllerArray
     }
     
-    func willChangeViewController(_ onBoardingViewController: WWOnBoardingViewController, currentIndex: Int, nextIndex: Int, error: WWOnBoardingViewController.OnBoardingError?) {
+    func willChangeViewController(_ onBoardingViewController: WWOnBoardingViewController, currentIndex: Int, nextIndex: Int, pageRotateDirection: WWOnBoardingViewController.PageRotateDirection, error: WWOnBoardingViewController.OnBoardingError?) {
         
-        if let error = error { wwPrint("willChangeError: \(currentIndex) => \(nextIndex) / \(error)"); return }
-        wwPrint("willChange: \(currentIndex) => \(nextIndex)")
+        if let error = error { wwPrint("willChangeError [\(pageRotateDirection)]: \(currentIndex) => \(nextIndex) / \(error)"); return }
+        wwPrint("willChange [\(pageRotateDirection)]: \(currentIndex) => \(nextIndex)")
     }
     
-    func didChangeViewController(_ onBoardingViewController: WWOnBoardingViewController, finishAnimating finished: Bool, transitionCompleted: Bool, currentIndex: Int, nextIndex: Int, error: WWOnBoardingViewController.OnBoardingError?) {
+    func didChangeViewController(_ onBoardingViewController: WWOnBoardingViewController, finishAnimating finished: Bool, transitionCompleted: Bool, currentIndex: Int, nextIndex: Int, pageRotateDirection: WWOnBoardingViewController.PageRotateDirection, error: WWOnBoardingViewController.OnBoardingError?) {
         
-        if let error = error { wwPrint("didChangeError: \(currentIndex) => \(nextIndex) / \(error)"); return }
-        wwPrint("didChange: \(currentIndex) => \(nextIndex)")
+        if let error = error { wwPrint("didChangeError [\(pageRotateDirection)]: \(currentIndex) => \(nextIndex) / \(error)"); return }
+        wwPrint("didChange [\(pageRotateDirection)]: \(currentIndex) => \(nextIndex)")
         pageControl.currentPage = currentIndex
     }
 }
