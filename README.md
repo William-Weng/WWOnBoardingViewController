@@ -37,6 +37,14 @@ Set UIPageViewController to WWOnBoardingViewController.
 |lastPage(animated:completion:)|到最後一頁|
 |moveNextPage(to:for:animated:completion:)|到某一頁|
 
+## WWOnBoardingViewControllerDelegate
+
+|函式|功能|
+|-|-|
+|viewControllers(onBoardingViewController:) -> [UIViewController]|換頁的UIViewControllers|
+|willChangeViewController(_:currentIndex:nextIndex:error: WWOnBoardingViewController.OnBoardingError?)|將要換頁功能|
+|didChangeViewController(_:finishAnimating:transitionCompleted:currentIndex:nextIndex:error: WWOnBoardingViewController.OnBoardingError?)|換頁完成功能|
+
 ## Example - 程式範例
 ```swift
 import UIKit

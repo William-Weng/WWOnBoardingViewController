@@ -49,7 +49,16 @@ extension ViewController: WWOnBoardingViewControllerDelegate {
         return pageViewControllerArray
     }
     
-    func changeViewController(_ onBoardingViewController: WWOnBoardingViewController, didFinishAnimating finished: Bool, currentIndex: Int, nextIndex: Int, error: WWOnBoardingViewController.OnBoardingError?) {
+    func willChangeViewController(_ onBoardingViewController: WWOnBoardingViewController, currentIndex: Int, nextIndex: Int, error: WWOnBoardingViewController.OnBoardingError?) {
+        
+        if let error = error { wwPrint("willChangeError => \(error)"); return }
+        wwPrint("willChange => \(nextIndex)")
+    }
+    
+    func didChangeViewController(_ onBoardingViewController: WWOnBoardingViewController, finishAnimating finished: Bool, transitionCompleted: Bool, currentIndex: Int, nextIndex: Int, error: WWOnBoardingViewController.OnBoardingError?) {
+        
+        if let error = error { wwPrint("didChangeError => \(error)"); return }
+        wwPrint("didChange => \(currentIndex)")
         pageControl.currentPage = currentIndex
     }
 }

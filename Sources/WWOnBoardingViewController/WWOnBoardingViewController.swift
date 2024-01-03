@@ -7,24 +7,6 @@
 
 import UIKit
 
-// MARK: - WWOnBoardingViewControllerDelegate
-public protocol WWOnBoardingViewControllerDelegate: AnyObject {
-    
-    /// [換頁的UIViewControllers](https://disp.cc/b/KnucklesNote/9XMd)
-    /// - Parameter onBoardingViewController: [OnBoardingViewController](https://medium.com/彼得潘的-swift-ios-app-開發問題解答集/隨著換頁更新的-page-control-小圓點-24f631c1928c)
-    /// - Returns: [UIViewController]
-    func viewControllers(onBoardingViewController: WWOnBoardingViewController) -> [UIViewController]
-    
-    /// [換頁功能](https://disp.cc/b/KnucklesNote/9XZn)
-    /// - Parameters:
-    ///   - onBoardingViewController: [OnBoardingViewController](https://disp.cc/b/KnucklesNote/8553)
-    ///   - finished: [動畫完成與否](https://disp.cc/b/KnucklesNote/9VtJ)
-    ///   - currentIndex: 目前頁的Index
-    ///   - nextIndex: 下一頁的Index
-    ///   - error: Error?
-    func changeViewController(_ onBoardingViewController: WWOnBoardingViewController, didFinishAnimating finished: Bool, currentIndex: Int, nextIndex: Int, error: WWOnBoardingViewController.OnBoardingError?)
-}
-
 // MARK: WWOnBoardingViewController
 open class WWOnBoardingViewController: UIPageViewController {
     
@@ -34,13 +16,15 @@ open class WWOnBoardingViewController: UIPageViewController {
         case firstPage                                                              // 已經到了第一頁
         case lastPage                                                               // 已經到了最後一頁
         case pageIndex                                                              // 頁數錯誤
+        case samePage                                                               // 是同一頁
     }
     
     private weak var onBoardingDelegate: WWOnBoardingViewControllerDelegate?        // OnBoardingViewControllerDelegate
+    
     private var isInfinityLoop = false                                              // 是否要無限滾動
     private var currentIndex = 0                                                    // 現在所在的頁數
-    
     private var nextIndex = 0                                                       // 下一頁的頁數
+    
     private var pageViewControllerArray: [UIViewController] {
         onBoardingDelegate?.viewControllers(onBoardingViewController: self) ?? []   // 取得引導頁的ViewController們
     }
@@ -101,17 +85,19 @@ public extension WWOnBoardingViewController {
         if (nextIndex >= pageViewControllerArray.count) {
             
             if (!isInfinityLoop) {
-                onBoardingDelegate?.changeViewController(self, didFinishAnimating: false, currentIndex: currentIndex, nextIndex: nextIndex, error: .lastPage)
+                onBoardingDelegate?.didChangeViewController(self, finishAnimating: true, transitionCompleted: false, currentIndex: currentIndex, nextIndex: currentIndex, error: .lastPage)
                 completion?(currentIndex); return
             }
 
             nextIndex = 0
         }
         
+        onBoardingDelegate?.willChangeViewController(self, currentIndex: currentIndex, nextIndex: nextIndex, error: nil)
+        
         moveNextPage(to: nextIndex, for: .forward, animated: animated) { isFinished in
             
             if (isFinished) {
-                self.onBoardingDelegate?.changeViewController(self, didFinishAnimating: false, currentIndex: self.currentIndex, nextIndex: nextIndex, error: nil)
+                self.onBoardingDelegate?.didChangeViewController(self, finishAnimating: isFinished, transitionCompleted: true, currentIndex: nextIndex, nextIndex: self.nextIndex, error: nil)
                 completion?(nextIndex)
             }
         }
@@ -128,17 +114,19 @@ public extension WWOnBoardingViewController {
         if (previousIndex < 0) {
             
             if (!isInfinityLoop) {
-                onBoardingDelegate?.changeViewController(self, didFinishAnimating: false, currentIndex: currentIndex, nextIndex: nextIndex, error: .firstPage)
+                onBoardingDelegate?.didChangeViewController(self, finishAnimating: true, transitionCompleted: false, currentIndex: currentIndex, nextIndex: currentIndex, error: .firstPage)
                 completion?(currentIndex); return
             }
             
             previousIndex = pageViewControllerArray.count - 1
         }
 
+        onBoardingDelegate?.willChangeViewController(self, currentIndex: currentIndex, nextIndex: previousIndex, error: nil)
+        
         moveNextPage(to: previousIndex, for: .reverse, animated: animated) { isFinished in
             
             if (isFinished) {
-                self.onBoardingDelegate?.changeViewController(self, didFinishAnimating: false, currentIndex: previousIndex, nextIndex: self.nextIndex, error: nil)
+                self.onBoardingDelegate?.didChangeViewController(self, finishAnimating: isFinished, transitionCompleted: true, currentIndex: previousIndex, nextIndex: self.nextIndex, error: nil)
                 completion?(previousIndex)
             }
         }
@@ -153,14 +141,18 @@ public extension WWOnBoardingViewController {
         let rootIndex = 0
 
         if (pageViewControllerArray.isEmpty) {
-            onBoardingDelegate?.changeViewController(self, didFinishAnimating: false, currentIndex: currentIndex, nextIndex: nextIndex, error: .arrayEmpty)
+            onBoardingDelegate?.willChangeViewController(self, currentIndex: currentIndex, nextIndex: nextIndex, error: .arrayEmpty)
             completion?(currentIndex); return
         }
+        
+        if (currentIndex == rootIndex) { self.onBoardingDelegate?.didChangeViewController(self, finishAnimating: false, transitionCompleted: false, currentIndex: rootIndex, nextIndex: self.nextIndex, error: .firstPage); return }
+        
+        onBoardingDelegate?.willChangeViewController(self, currentIndex: currentIndex, nextIndex: rootIndex, error: nil)
         
         moveNextPage(to: rootIndex, for: .reverse, animated: animated) { isFinished in
             
             if (isFinished) {
-                self.onBoardingDelegate?.changeViewController(self, didFinishAnimating: false, currentIndex: rootIndex, nextIndex: self.nextIndex, error: nil)
+                self.onBoardingDelegate?.didChangeViewController(self, finishAnimating: isFinished, transitionCompleted: true, currentIndex: rootIndex, nextIndex: self.nextIndex, error: nil)
                 completion?(rootIndex)
             }
         }
@@ -175,13 +167,18 @@ public extension WWOnBoardingViewController {
         let lastIndex = pageViewControllerArray.count - 1
         
         if (pageViewControllerArray.isEmpty) {
-            onBoardingDelegate?.changeViewController(self, didFinishAnimating: false, currentIndex: currentIndex, nextIndex: nextIndex, error: .arrayEmpty)
+            onBoardingDelegate?.willChangeViewController(self, currentIndex: currentIndex, nextIndex: nextIndex, error: .arrayEmpty)
             completion?(currentIndex); return
         }
+                
+        if (currentIndex == lastIndex) { self.onBoardingDelegate?.didChangeViewController(self, finishAnimating: false, transitionCompleted: false, currentIndex: lastIndex, nextIndex: self.nextIndex, error: .lastPage); return }
+        
+        onBoardingDelegate?.willChangeViewController(self, currentIndex: currentIndex, nextIndex: lastIndex, error: nil)
         
         moveNextPage(to: lastIndex, for: .forward, animated: animated) { isFinished in
+            
             if (isFinished) {
-                self.onBoardingDelegate?.changeViewController(self, didFinishAnimating: false, currentIndex: lastIndex, nextIndex: self.nextIndex, error: nil)
+                self.onBoardingDelegate?.didChangeViewController(self, finishAnimating: isFinished, transitionCompleted: true, currentIndex: lastIndex, nextIndex: self.nextIndex, error: nil)
                 completion?(lastIndex)
             }
         }
@@ -196,7 +193,7 @@ public extension WWOnBoardingViewController {
     func moveNextPage(to pageIndex: Int, for direction: UIPageViewController.NavigationDirection, animated: Bool, completion: ((Bool) -> Void)?) {
         
         guard let nextPage = pageViewControllerArray[safe: pageIndex] else {
-            onBoardingDelegate?.changeViewController(self, didFinishAnimating: false, currentIndex: currentIndex, nextIndex: nextIndex, error: .pageIndex)
+            onBoardingDelegate?.didChangeViewController(self, finishAnimating: false, transitionCompleted: false, currentIndex: currentIndex, nextIndex: nextIndex, error: .pageIndex)
             return
         }
         
@@ -215,16 +212,14 @@ private extension WWOnBoardingViewController {
     func pageViewControllerSetting(completion: ((Bool) -> Void)?) {
         
         guard let firstViewController = pageViewControllerArray[safe: currentIndex] else {
-            onBoardingDelegate?.changeViewController(self, didFinishAnimating: false, currentIndex: currentIndex, nextIndex: nextIndex, error: .currentIndexOutOfRange)
+            onBoardingDelegate?.didChangeViewController(self, finishAnimating: false, transitionCompleted: false, currentIndex: currentIndex, nextIndex: nextIndex, error: .currentIndexOutOfRange)
             return
         }
         
         dataSource = self
         delegate = self
         
-        setViewControllers([firstViewController], direction: .forward, animated: true, completion: { isFinished in
-            completion?(isFinished)
-        })
+        setViewControllers([firstViewController], direction: .forward, animated: true, completion: { completion?($0) })
     }
     
     /// 將要換頁的動作
@@ -240,7 +235,7 @@ private extension WWOnBoardingViewController {
         }
         
         self.nextIndex = nextIndex
-        onBoardingDelegate?.changeViewController(self, didFinishAnimating: false, currentIndex: currentIndex, nextIndex: nextIndex, error: nil)
+        onBoardingDelegate?.willChangeViewController(self, currentIndex: currentIndex, nextIndex: nextIndex, error: nil)
     }
     
     /// 換頁完成的動作
@@ -262,7 +257,7 @@ private extension WWOnBoardingViewController {
             self.currentIndex = currentIndex
         }
         
-        onBoardingDelegate?.changeViewController(self, didFinishAnimating: finished, currentIndex: currentIndex, nextIndex: nextIndex, error: nil)
+        onBoardingDelegate?.didChangeViewController(self, finishAnimating: finished, transitionCompleted: completed, currentIndex: currentIndex, nextIndex: nextIndex, error: nil)
     }
     
     /// 取得當前頁面的下一頁 ==> 下一頁如果超過總頁面的話就回到第一頁
@@ -275,7 +270,7 @@ private extension WWOnBoardingViewController {
         if (nextIndex >= pageViewControllerArray.count) {
             
             if (!isInfinityLoop) {
-                onBoardingDelegate?.changeViewController(self, didFinishAnimating: false, currentIndex: currentIndex, nextIndex: nextIndex, error: .lastPage)
+                onBoardingDelegate?.willChangeViewController(self, currentIndex: currentIndex, nextIndex: currentIndex, error: .lastPage)
                 return nil
             }
             
@@ -297,7 +292,7 @@ private extension WWOnBoardingViewController {
         if (previousIndex < 0) {
             
             if (!isInfinityLoop) {
-                onBoardingDelegate?.changeViewController(self, didFinishAnimating: false, currentIndex: currentIndex, nextIndex: nextIndex, error: .firstPage)
+                onBoardingDelegate?.willChangeViewController(self, currentIndex: currentIndex, nextIndex: viewControllerIndex, error: .firstPage)
                 return nil
             }
             
