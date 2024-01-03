@@ -23,6 +23,7 @@ final class ViewController: UIViewController {
     }()
     
     private let currentPage = 0
+    private let isInfinityLoop = true
     private var onBoardingViewController: WWOnBoardingViewController?
 
     override func viewDidLoad() {
@@ -51,14 +52,14 @@ extension ViewController: WWOnBoardingViewControllerDelegate {
     
     func willChangeViewController(_ onBoardingViewController: WWOnBoardingViewController, currentIndex: Int, nextIndex: Int, error: WWOnBoardingViewController.OnBoardingError?) {
         
-        if let error = error { wwPrint("willChangeError => \(error)"); return }
-        wwPrint("willChange => \(nextIndex)")
+        if let error = error { wwPrint("willChangeError: \(currentIndex) => \(nextIndex) / \(error)"); return }
+        wwPrint("willChange: \(currentIndex) => \(nextIndex)")
     }
     
     func didChangeViewController(_ onBoardingViewController: WWOnBoardingViewController, finishAnimating finished: Bool, transitionCompleted: Bool, currentIndex: Int, nextIndex: Int, error: WWOnBoardingViewController.OnBoardingError?) {
         
-        if let error = error { wwPrint("didChangeError => \(error)"); return }
-        wwPrint("didChange => \(currentIndex)")
+        if let error = error { wwPrint("didChangeError: \(currentIndex) => \(nextIndex) / \(error)"); return }
+        wwPrint("didChange: \(currentIndex) => \(nextIndex)")
         pageControl.currentPage = currentIndex
     }
 }
@@ -73,7 +74,7 @@ private extension ViewController {
     func initSetting(for segue: UIStoryboardSegue, sender: Any?) {
         
         onBoardingViewController = segue.destination as? WWOnBoardingViewController
-        onBoardingViewController?.setting(onBoardingDelegate: self, isInfinityLoop: true, currentIndex: currentPage)
+        onBoardingViewController?.setting(onBoardingDelegate: self, isInfinityLoop: isInfinityLoop, currentIndex: currentPage)
     }
     
     /// 尋找Storyboard上的ViewController for StoryboardId
