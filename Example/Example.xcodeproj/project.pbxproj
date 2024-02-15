@@ -15,6 +15,7 @@
 		3DBCD88026F198F300522E3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DBCD87E26F198F300522E3B /* LaunchScreen.storyboard */; };
 		8130039027D5D18100436128 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8130038F27D5D18100436128 /* Constant.swift */; };
 		8130039227D5D19000436128 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8130039127D5D19000436128 /* Extension.swift */; };
+		813892752B7E054300D67D98 /* WWOnBoardingViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 813892742B7E054300D67D98 /* WWOnBoardingViewController */; };
 		8154F50B2B3E67B70003EEA7 /* WWOnBoardingViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 8154F50A2B3E67B70003EEA7 /* WWOnBoardingViewController */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +29,6 @@
 		3DBCD88126F198F300522E3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8130038F27D5D18100436128 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		8130039127D5D19000436128 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
-		8138926E2B7DE87D00D67D98 /* WWOnBoardingViewController */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = WWOnBoardingViewController; path = ../WWOnBoardingViewController; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +38,7 @@
 			files = (
 				8154F50B2B3E67B70003EEA7 /* WWOnBoardingViewController in Frameworks */,
 				3DAC9C1927016E78006663C2 /* WWPrint in Frameworks */,
+				813892752B7E054300D67D98 /* WWOnBoardingViewController in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,7 +48,6 @@
 		3DBCD86726F198EF00522E3B = {
 			isa = PBXGroup;
 			children = (
-				8138926D2B7DE87D00D67D98 /* Packages */,
 				3DBCD87226F198EF00522E3B /* Example */,
 				3DBCD87126F198EF00522E3B /* Products */,
 				81AC148C2B3D2CDD00973CA6 /* Frameworks */,
@@ -117,14 +117,6 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
-		8138926D2B7DE87D00D67D98 /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				8138926E2B7DE87D00D67D98 /* WWOnBoardingViewController */,
-			);
-			name = Packages;
-			sourceTree = "<group>";
-		};
 		81AC148C2B3D2CDD00973CA6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +143,7 @@
 			packageProductDependencies = (
 				3DAC9C1827016E78006663C2 /* WWPrint */,
 				8154F50A2B3E67B70003EEA7 /* WWOnBoardingViewController */,
+				813892742B7E054300D67D98 /* WWOnBoardingViewController */,
 			);
 			productName = Example;
 			productReference = 3DBCD87026F198EF00522E3B /* Example.app */;
@@ -182,6 +175,7 @@
 			mainGroup = 3DBCD86726F198EF00522E3B;
 			packageReferences = (
 				3DAC9C1727016E78006663C2 /* XCRemoteSwiftPackageReference "WWPrint" */,
+				813892732B7E054300D67D98 /* XCRemoteSwiftPackageReference "WWOnBoardingViewController" */,
 			);
 			productRefGroup = 3DBCD87126F198EF00522E3B /* Products */;
 			projectDirPath = "";
@@ -433,6 +427,14 @@
 				minimumVersion = 1.2.0;
 			};
 		};
+		813892732B7E054300D67D98 /* XCRemoteSwiftPackageReference "WWOnBoardingViewController" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/William-Weng/WWOnBoardingViewController";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -440,6 +442,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3DAC9C1727016E78006663C2 /* XCRemoteSwiftPackageReference "WWPrint" */;
 			productName = WWPrint;
+		};
+		813892742B7E054300D67D98 /* WWOnBoardingViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 813892732B7E054300D67D98 /* XCRemoteSwiftPackageReference "WWOnBoardingViewController" */;
+			productName = WWOnBoardingViewController;
 		};
 		8154F50A2B3E67B70003EEA7 /* WWOnBoardingViewController */ = {
 			isa = XCSwiftPackageProductDependency;
