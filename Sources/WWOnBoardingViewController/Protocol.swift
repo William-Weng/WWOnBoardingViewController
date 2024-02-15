@@ -2,7 +2,7 @@
 //  Protocol.swift
 //  WWOnBoardingViewController
 //
-//  Created by iOS on 2023/12/27.
+//  Created by William.Weng on 2023/12/27.
 //
 
 import UIKit
@@ -14,6 +14,11 @@ public protocol WWOnBoardingViewControllerDelegate: AnyObject {
     /// - Parameter onBoardingViewController: [OnBoardingViewController](https://medium.com/彼得潘的-swift-ios-app-開發問題解答集/隨著換頁更新的-page-control-小圓點-24f631c1928c)
     /// - Returns: [UIViewController]
     func viewControllers(onBoardingViewController: WWOnBoardingViewController) -> [UIViewController]
+    
+    /// 無限Loop的設定
+    /// - Parameter onBoardingViewController: WWOnBoardingViewController
+    /// - Returns: WWOnBoardingViewController.InfinityLoopInformation
+    func infinityLoop(onBoardingViewController: WWOnBoardingViewController) -> WWOnBoardingViewController.InfinityLoopInformation
     
     /// 將要換頁功能
     /// - Parameters:

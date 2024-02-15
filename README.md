@@ -41,7 +41,8 @@ Set UIPageViewController to WWOnBoardingViewController.
 
 |函式|功能|
 |-|-|
-|viewControllers(onBoardingViewController:) -> [UIViewController]|換頁的UIViewControllers|
+|viewControllers(onBoardingViewController:)|換頁的UIViewControllers|
+|infinityLoop(onBoardingViewController:)|無限Loop的設定|
 |willChangeViewController(_:currentIndex:nextIndex:pageRotateDirection:error:)|將要換頁功能|
 |didChangeViewController(_:finishAnimating:transitionCompleted:currentIndex:nextIndex:pageRotateDirection:error:)|換頁完成功能|
 
@@ -65,7 +66,6 @@ final class ViewController: UIViewController {
     }()
     
     private let currentPage = 0
-    private let isInfinityLoop = true
     private var onBoardingViewController: WWOnBoardingViewController?
 
     override func viewDidLoad() {
@@ -92,6 +92,11 @@ extension ViewController: WWOnBoardingViewControllerDelegate {
         return pageViewControllerArray
     }
     
+    func infinityLoop(onBoardingViewController: WWOnBoardingViewController) -> WWOnBoardingViewController.InfinityLoopInformation {
+        let info: WWOnBoardingViewController.InfinityLoopInformation = (hasPrevious: true, hasNext: true)
+        return info
+    }
+    
     func willChangeViewController(_ onBoardingViewController: WWOnBoardingViewController, currentIndex: Int, nextIndex: Int, pageRotateDirection: WWOnBoardingViewController.PageRotateDirection, error: WWOnBoardingViewController.OnBoardingError?) {
         
         if let error = error { wwPrint("willChangeError [\(pageRotateDirection)]: \(currentIndex) => \(nextIndex) / \(error)"); return }
@@ -114,9 +119,8 @@ private extension ViewController {
     ///   - segue: UIStoryboardSegue
     ///   - sender: Any?
     func initSetting(for segue: UIStoryboardSegue, sender: Any?) {
-        
         onBoardingViewController = segue.destination as? WWOnBoardingViewController
-        onBoardingViewController?.setting(onBoardingDelegate: self, isInfinityLoop: isInfinityLoop, currentIndex: currentPage)
+        onBoardingViewController?.setting(onBoardingDelegate: self, currentIndex: currentPage)
     }
     
     /// 尋找Storyboard上的ViewController for StoryboardId
@@ -134,7 +138,6 @@ private extension ViewController {
         pageControl.currentPage = currentPage
         pageControl.backgroundStyle = .prominent
         
-        // pageControl.preferredIndicatorImage = UIImage(systemName: "sun.max.fill")
         (0..<pageControl.numberOfPages).forEach { pageControl.setIndicatorImage(UIImage(systemName: "\($0).circle"), forPage: $0) }
         pageControl.addTarget(self, action: #selector(changeCurrentPage(_:)), for: .valueChanged)
     }

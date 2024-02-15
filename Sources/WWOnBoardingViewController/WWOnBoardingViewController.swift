@@ -2,13 +2,15 @@
 //  WWOnBoardingViewController.swift
 //  WWOnBoardingViewController
 //
-//  Created by iOS on 2023/12/27.
+//  Created by William.Weng on 2023/12/27.
 //
 
 import UIKit
 
 // MARK: WWOnBoardingViewController
 open class WWOnBoardingViewController: UIPageViewController {
+    
+    public typealias InfinityLoopInformation = (hasPrevious: Bool, hasNext: Bool)   // 是否要無限滾動 / 無限Loop時有沒有上一頁？下一頁？
     
     public enum OnBoardingError: Error {
         case currentIndexOutOfRange                                                 // 頁數的Index超出範圍
@@ -27,7 +29,6 @@ open class WWOnBoardingViewController: UIPageViewController {
     
     private weak var onBoardingDelegate: WWOnBoardingViewControllerDelegate?        // OnBoardingViewControllerDelegate
     
-    private var isInfinityLoop = false                                              // 是否要無限滾動
     private var currentIndex = 0                                                    // 現在所在的頁數
     private var nextIndex = 0                                                       // 下一頁的頁數
     private var pageRotateDirection: PageRotateDirection = .none                    // 滑動方向
@@ -72,12 +73,10 @@ public extension WWOnBoardingViewController {
     /// [相關設定](https://www.cnblogs.com/XYQ-208910/p/4850281.html)
     /// - Parameters:
     ///   - onBoardingDelegate: WWOnBoardingViewControllerDelegate?
-    ///   - isInfinityLoop: 是否無限迴轉
     ///   - currentIndex: 開始頁面
-    func setting(onBoardingDelegate: WWOnBoardingViewControllerDelegate? = nil, isInfinityLoop: Bool = false, currentIndex: Int = 0) {
+    func setting(onBoardingDelegate: WWOnBoardingViewControllerDelegate? = nil, currentIndex: Int = 0) {
         
         self.onBoardingDelegate = onBoardingDelegate
-        self.isInfinityLoop = isInfinityLoop
         self.currentIndex = currentIndex
     }
     
@@ -91,7 +90,9 @@ public extension WWOnBoardingViewController {
         
         if (nextIndex >= pageViewControllerArray.count) {
             
-            if (!isInfinityLoop) {
+            let hasNext = onBoardingDelegate?.infinityLoop(onBoardingViewController: self).hasNext ?? false
+            
+            if (!hasNext) {
                 onBoardingDelegate?.didChangeViewController(self, finishAnimating: true, transitionCompleted: false, currentIndex: currentIndex, nextIndex: currentIndex, pageRotateDirection: .right, error: .lastPage)
                 completion?(currentIndex); return
             }
@@ -121,7 +122,9 @@ public extension WWOnBoardingViewController {
         
         if (previousIndex < 0) {
             
-            if (!isInfinityLoop) {
+            let hasPrevious = onBoardingDelegate?.infinityLoop(onBoardingViewController: self).hasPrevious ?? false
+            
+            if (!hasPrevious) {
                 onBoardingDelegate?.didChangeViewController(self, finishAnimating: true, transitionCompleted: false, currentIndex: currentIndex, nextIndex: currentIndex, pageRotateDirection: .left, error: .firstPage)
                 completion?(currentIndex); return
             }
@@ -247,19 +250,20 @@ private extension WWOnBoardingViewController {
     func willTransitionToAction(_ pageViewController: UIPageViewController, pendingViewControllers: [UIViewController], lastPageIndex: Int) {
         
         guard let nextController = pendingViewControllers.first,
-              let nextIndex = pageViewControllerArray.firstIndex(of: nextController)
+              let nextIndex = pageViewControllerArray.firstIndex(of: nextController),
+              let infinityLoop = onBoardingDelegate?.infinityLoop(onBoardingViewController: self)
         else {
             return
         }
-                
+        
         switch pageRotateDirection {
         case .right:
             currentIndex = nextIndex - 1
-            if (isInfinityLoop) { if (currentIndex < 0) { currentIndex = lastPageIndex }}
+            if (infinityLoop.hasNext) { if (currentIndex < 0) { currentIndex = lastPageIndex }}
             
         case .left:
             currentIndex = nextIndex + 1
-            if (isInfinityLoop) { if (nextIndex == lastPageIndex) { currentIndex = 0 }}
+            if (infinityLoop.hasPrevious) { if (nextIndex == lastPageIndex) { currentIndex = 0 }}
             
         case .none:
             break
@@ -298,13 +302,17 @@ private extension WWOnBoardingViewController {
     /// 取得當前頁面的下一頁 ==> 下一頁如果超過總頁面的話就回到第一頁
     func nextViewController(for currentViewController: UIViewController) -> UIViewController? {
         
-        guard let currentIndex = pageViewControllerArray.firstIndex(of: currentViewController) else { return nil }
+        guard let currentIndex = pageViewControllerArray.firstIndex(of: currentViewController),
+              let infinityLoop = onBoardingDelegate?.infinityLoop(onBoardingViewController: self)
+        else {
+            return nil
+        }
         
         let nextIndex = currentIndex + 1
         
         if (nextIndex >= pageViewControllerArray.count) {
             
-            if (!isInfinityLoop) {
+            if (!infinityLoop.hasNext) {
                 self.currentIndex = pageViewControllerArray._index()
                 onBoardingDelegate?.willChangeViewController(self, currentIndex: self.currentIndex, nextIndex: self.currentIndex, pageRotateDirection: .right, error: .lastPage)
                 return nil
@@ -321,13 +329,17 @@ private extension WWOnBoardingViewController {
     /// - Returns: UIViewController?
     func previousViewController(for currentViewController: UIViewController) -> UIViewController? {
         
-        guard let viewControllerIndex = pageViewControllerArray.firstIndex(of: currentViewController) else { return nil }
+        guard let viewControllerIndex = pageViewControllerArray.firstIndex(of: currentViewController),
+              let infinityLoop = onBoardingDelegate?.infinityLoop(onBoardingViewController: self)
+        else {
+            return nil
+        }
         
         let previousIndex = viewControllerIndex - 1
         
         if (previousIndex < 0) {
             
-            if (!isInfinityLoop) {
+            if (!infinityLoop.hasPrevious) {
                 self.currentIndex = 0
                 onBoardingDelegate?.willChangeViewController(self, currentIndex: self.currentIndex, nextIndex: self.currentIndex, pageRotateDirection: .left, error: .firstPage)
                 return nil
