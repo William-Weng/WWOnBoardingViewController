@@ -14,7 +14,7 @@ let package = Package(
     dependencies: [
     ],
     targets: [
-        .target(name: "WWOnBoardingViewController", dependencies: []),
+        .target(name: "WWOnBoardingViewController", resources: [.copy("Privacy")]),
     ],
     swiftLanguageVersions: [
         .v5
